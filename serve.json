@@ -1,0 +1,16 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/cotizacion", "destination": "/cotizacion.html" },
+    { "source": "/checkout", "destination": "/checkout.html" },
+    { "source": "/gs_landing_page", "destination": "/gs_landing_page.html" }
+  ],
+  "headers": [
+    {
+      "source": "**/*.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache" }
+      ]
+    }
+  ]
+}

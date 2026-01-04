@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "G&S Landing Page - Sitio web estático",
   "scripts": {
-    "start": "npx serve -s . -l 8080"
+    "start": "npx serve -s . -l 8080 -c serve.json"
   },
   "engines": {
     "node": ">=18"
