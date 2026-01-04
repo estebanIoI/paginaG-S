@@ -1,0 +1,11 @@
+{
+  "name": "gs-landing-page",
+  "version": "1.0.0",
+  "description": "G&S Landing Page - Sitio web estático",
+  "scripts": {
+    "start": "npx serve -s . -l 8080"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
