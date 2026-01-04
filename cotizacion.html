@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización Inteligente | G&S Tapicería y Instalaciones</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            min-height: 100vh;
+        }
+
+        /* HERO SECTION */
+        .hero-quote {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-quote::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-30px, 30px); }
+        }
+
+        .hero-quote-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero-quote h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-quote p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 30px;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .hero-feature-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* MAIN CONTAINER */
+        .quote-container {
+            max-width: 900px;
+            margin: -40px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quote-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* PROGRESS BAR */
+        .progress-container {
+            padding: 25px 30px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            z-index: 1;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #a0aec0;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .step-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-color: #667eea;
+            color: white;
+        }
+
+        .progress-step.completed .step-number {
+            background: #48bb78;
+            border-color: #48bb78;
+            color: white;
+        }
+
+        .step-label {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #718096;
+            font-weight: 500;
+        }
+
+        .progress-step.active .step-label {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* FORM SECTIONS */
+        .form-section {
+            padding: 40px;
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #718096;
+            margin-bottom: 30px;
+        }
+
+        /* SERVICE SELECTOR */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .service-option {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 25px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+
+        .service-option:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+        }
+
+        .service-option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.08));
+        }
+
+        .service-option.selected::after {
+            content: '✓';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .service-desc {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        /* FORM INPUTS */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 8px;
+        }
+
+        .form-label .required {
+            color: #e53e3e;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+        }
+
+        .form-input.error,
+        .form-select.error,
+        .form-textarea.error {
+            border-color: #e53e3e;
+            background: #fff5f5;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .error-message {
+            color: #e53e3e;
+            font-size: 0.8rem;
+            margin-top: 6px;
+            display: none;
+        }
+
+        .form-input.error + .error-message,
+        .form-select.error + .error-message,
+        .form-textarea.error + .error-message {
+            display: block;
+        }
+
+        /* URGENCY SELECTOR */
+        .urgency-options {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .urgency-option {
+            flex: 1;
+            min-width: 100px;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .urgency-option:hover {
+            border-color: #667eea;
+        }
+
+        .urgency-option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            color: #667eea;
+        }
+
+        .urgency-option.urgent {
+            border-color: #ed8936;
+            color: #ed8936;
+        }
+
+        .urgency-option.urgent.selected {
+            background: rgba(237, 137, 54, 0.1);
+        }
+
+        /* BUDGET SLIDER */
+        .budget-display {
+            text-align: center;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .budget-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .budget-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e2e8f0;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .budget-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        /* BUTTONS */
+        .form-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-secondary {
+            background: #f7fafc;
+            color: #4a5568;
+            border: 2px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #edf2f7;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        /* SUCCESS SECTION */
+        .success-section {
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 3rem;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .success-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .success-message {
+            font-size: 1.1rem;
+            color: #718096;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .success-details {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+
+        .success-detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .success-detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .detail-value {
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .success-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn-copy {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .btn-copy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-copy.copied {
+            background: #48bb78;
+        }
+
+        .copy-info-box {
+            background: #f0f4ff;
+            border: 2px dashed #667eea;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .copy-info-box pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+            font-family: inherit;
+            color: #4a5568;
+        }
+
+        .whatsapp-section {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(37, 211, 102, 0.05));
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 20px;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-section h3 {
+            color: #25d366;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .whatsapp-section p {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-whatsapp-large {
+            background: #25d366;
+            color: white;
+            width: 100%;
+            max-width: 350px;
+            padding: 18px 32px;
+            font-size: 1.1rem;
+        }
+
+        .btn-whatsapp-large:hover {
+            background: #20bd5a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        /* TRUST INDICATORS */
+        .trust-section {
+            background: #f8fafc;
+            padding: 25px 40px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .trust-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .trust-icon {
+            font-size: 1.2rem;
+        }
+
+        /* BACK LINK */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-quote {
+                padding: 40px 20px 60px;
+            }
+
+            .hero-quote h1 {
+                font-size: 2rem;
+            }
+
+            .hero-quote p {
+                font-size: 1rem;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+
+            .form-section {
+                padding: 25px;
+            }
+
+            .progress-container {
+                padding: 20px 15px;
+            }
+
+            .step-label {
+                font-size: 0.75rem;
+            }
+
+            .step-number {
+                width: 32px;
+                height: 32px;
+                font-size: 0.85rem;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .urgency-options {
+                flex-direction: column;
+            }
+
+            .success-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero-quote">
+        <div class="hero-quote-content">
+            <a href="gs_landing_page.html" class="back-link">← Volver al inicio</a>
+            <div class="hero-badge">⚡ Respuesta en menos de 24 horas</div>
+            <h1>Cotiza Tu Proyecto en Minutos</h1>
+            <p>Recibe una cotización personalizada y detallada sin compromiso. Nuestros expertos analizarán tu solicitud para ofrecerte la mejor solución.</p>
+            
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">✓</span>
+                    <span>100% Gratis</span>
+                </div>
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">⏱</span>
+                    <span>Solo 3 minutos</span>
+                </div>
+                <div class="hero-feature">
+                    <span class="hero-feature-icon">🎯</span>
+                    <span>Cotización precisa</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE FORM -->
+    <div class="quote-container">
+        <div class="quote-card">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-steps">
+                    <div class="progress-line" id="progressLine"></div>
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <span class="step-label">Servicio</span>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <span class="step-label">Detalles</span>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <span class="step-label">Contacto</span>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <span class="step-label">Confirmar</span>
+                    </div>
+                </div>
+            </div>
+
+            <form id="quoteForm">
+                <!-- STEP 1: Service Selection -->
+                <div class="form-section active" data-section="1">
+                    <h2 class="section-title">¿Qué servicio necesitas?</h2>
+                    <p class="section-subtitle">Selecciona el tipo de servicio para personalizar tu cotización</p>
+                    
+                    <div class="service-grid">
+                        <div class="service-option" data-service="tapiceria">
+                            <div class="service-icon">🛋️</div>
+                            <div class="service-name">Tapicería Premium</div>
+                            <div class="service-desc">Restauración y fabricación de muebles tapizados</div>
+                        </div>
+                        
+                        <div class="service-option" data-service="instalaciones">
+                            <div class="service-icon">🔨</div>
+                            <div class="service-name">Instalaciones</div>
+                            <div class="service-desc">Montaje de soportes, estanterías y muebles</div>
+                        </div>
+                        
+                        <div class="service-option" data-service="oficinas">
+                            <div class="service-icon">🏢</div>
+                            <div class="service-name">Oficinas Corporativas</div>
+                            <div class="service-desc">Diseño y equipamiento de espacios de trabajo</div>
+                        </div>
+                        
+                        <div class="service-option" data-service="productos">
+                            <div class="service-icon">🛒</div>
+                            <div class="service-name">Productos Premium</div>
+                            <div class="service-desc">Ruedas, herrajes y accesorios de calidad</div>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-primary" id="btnStep1" disabled>
+                            Continuar
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Service Details (Dynamic) -->
+                <div class="form-section" data-section="2">
+                    <h2 class="section-title">Detalles del proyecto</h2>
+                    <p class="section-subtitle">Cuéntanos más sobre lo que necesitas</p>
+
+                    <!-- Tapicería Form -->
+                    <div class="dynamic-form" id="form-tapiceria" style="display: none;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Tipo de mueble <span class="required">*</span></label>
+                                <select class="form-select" name="tipo_mueble" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="sofa">Sofá</option>
+                                    <option value="silla">Silla / Sillón</option>
+                                    <option value="cabecera">Cabecera de cama</option>
+                                    <option value="banco">Banco / Banqueta</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                                <span class="error-message">Este campo es obligatorio</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Cantidad de piezas <span class="required">*</span></label>
+                                <input type="number" class="form-input" name="cantidad" min="1" value="1" required>
+                                <span class="error-message">Ingresa una cantidad válida</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Tipo de trabajo <span class="required">*</span></label>
+                                <select class="form-select" name="tipo_trabajo" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="restauracion">Restauración completa</option>
+                                    <option value="retapizado">Solo retapizado</option>
+                                    <option value="reparacion">Reparación específica</option>
+                                    <option value="fabricacion">Fabricación nueva</option>
+                                </select>
+                                <span class="error-message">Este campo es obligatorio</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Tipo de tela preferida</label>
+                                <select class="form-select" name="tipo_tela">
+                                    <option value="">Sin preferencia</option>
+                                    <option value="cuero">Cuero genuino</option>
+                                    <option value="sintetico">Cuero sintético</option>
+                                    <option value="tela">Tela decorativa</option>
+                                    <option value="lino">Lino</option>
+                                    <option value="terciopelo">Terciopelo</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label class="form-label">Descripción del proyecto <span class="required">*</span></label>
+                                <textarea class="form-textarea" name="descripcion" placeholder="Describe el estado actual del mueble, medidas aproximadas, colores deseados..." required></textarea>
+                                <span class="error-message">Por favor describe tu proyecto</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instalaciones Form -->
+                    <div class="dynamic-form" id="form-instalaciones" style="display: none;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Tipo de instalación <span class="required">*</span></label>
+                                <select class="form-select" name="tipo_instalacion" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="soporte_tv">Soporte de TV</option>
+                                    <option value="estanteria">Estanterías</option>
+                                    <option value="mueble_modular">Muebles modulares</option>
+                                    <option value="cortinas">Cortinas / Persianas</option>
+                                    <option value="organizadores">Sistemas organizadores</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                                <span class="error-message">Este campo es obligatorio</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Cantidad de instalaciones <span class="required">*</span></label>
+                                <input type="number" class="form-input" name="cantidad" min="1" value="1" required>
+                                <span class="error-message">Ingresa una cantidad válida</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Tipo de pared/superficie</label>
+                                <select class="form-select" name="tipo_pared">
+                                    <option value="">No lo sé</option>
+                                    <option value="concreto">Concreto</option>
+                                    <option value="ladrillo">Ladrillo</option>
+                                    <option value="drywall">Drywall / Tablaroca</option>
+                                    <option value="madera">Madera</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Ubicación</label>
+                                <select class="form-select" name="ubicacion">
+                                    <option value="">Selecciona</option>
+                                    <option value="casa">Casa / Apartamento</option>
+                                    <option value="oficina">Oficina</option>
+                                    <option value="negocio">Negocio / Local</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label class="form-label">Detalles adicionales <span class="required">*</span></label>
+                                <textarea class="form-textarea" name="descripcion" placeholder="Describe qué necesitas instalar, medidas, cantidad de puntos de instalación..." required></textarea>
+                                <span class="error-message">Por favor describe tu proyecto</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Oficinas Form -->
+                    <div class="dynamic-form" id="form-oficinas" style="display: none;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Tipo de proyecto <span class="required">*</span></label>
+                                <select class="form-select" name="tipo_proyecto" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="equipamiento">Equipamiento completo</option>
+                                    <option value="remodelacion">Remodelación</option>
+                                    <option value="mobiliario">Solo mobiliario</option>
+                                    <option value="estaciones">Estaciones de trabajo</option>
+                                </select>
+                                <span class="error-message">Este campo es obligatorio</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Número de personas/estaciones <span class="required">*</span></label>
+                                <input type="number" class="form-input" name="cantidad_personas" min="1" value="1" required>
+                                <span class="error-message">Ingresa una cantidad válida</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Área aproximada (m²)</label>
+                                <input type="number" class="form-input" name="area" min="1" placeholder="Ej: 50">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Tipo de empresa</label>
+                                <select class="form-select" name="tipo_empresa">
+                                    <option value="">Selecciona</option>
+                                    <option value="startup">Startup / Emprendimiento</option>
+                                    <option value="pyme">PyME</option>
+                                    <option value="corporativo">Corporativo</option>
+                                    <option value="coworking">Coworking</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label class="form-label">Descripción del proyecto <span class="required">*</span></label>
+                                <textarea class="form-textarea" name="descripcion" placeholder="Describe tus necesidades: tipo de muebles, estilo, funcionalidades especiales..." required></textarea>
+                                <span class="error-message">Por favor describe tu proyecto</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Productos Form -->
+                    <div class="dynamic-form" id="form-productos" style="display: none;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Tipo de producto <span class="required">*</span></label>
+                                <select class="form-select" name="tipo_producto" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="ruedas">Ruedas industriales</option>
+                                    <option value="herrajes">Herrajes y accesorios</option>
+                                    <option value="cerraduras">Cerraduras y manijas</option>
+                                    <option value="soportes">Soportes y bases</option>
+                                    <option value="varios">Varios / Catálogo completo</option>
+                                </select>
+                                <span class="error-message">Este campo es obligatorio</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Cantidad aproximada <span class="required">*</span></label>
+                                <input type="number" class="form-input" name="cantidad" min="1" value="1" required>
+                                <span class="error-message">Ingresa una cantidad válida</span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">¿Para qué aplicación?</label>
+                                <select class="form-select" name="aplicacion">
+                                    <option value="">Selecciona</option>
+                                    <option value="industrial">Industrial</option>
+                                    <option value="muebles">Muebles</option>
+                                    <option value="hogar">Hogar</option>
+                                    <option value="comercial">Comercial</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">¿Necesita instalación?</label>
+                                <select class="form-select" name="necesita_instalacion">
+                                    <option value="no">No, solo el producto</option>
+                                    <option value="si">Sí, incluir instalación</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label class="form-label">Especificaciones adicionales</label>
+                                <textarea class="form-textarea" name="descripcion" placeholder="Describe los productos que necesitas, medidas, capacidad de carga, materiales preferidos..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Common: Urgency & Budget -->
+                    <div class="form-grid" style="margin-top: 30px;">
+                        <div class="form-group">
+                            <label class="form-label">Nivel de urgencia</label>
+                            <div class="urgency-options">
+                                <div class="urgency-option" data-urgency="normal">🕐 Normal</div>
+                                <div class="urgency-option" data-urgency="pronto">⏰ Pronto</div>
+                                <div class="urgency-option urgent" data-urgency="urgente">🔥 Urgente</div>
+                            </div>
+                            <input type="hidden" name="urgencia" value="normal">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Fecha deseada de entrega</label>
+                            <input type="date" class="form-input" name="fecha_entrega">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Presupuesto estimado</label>
+                            <div class="budget-display">
+                                <span class="budget-value" id="budgetValue">$500 - $2,000</span>
+                            </div>
+                            <input type="range" class="budget-slider" id="budgetSlider" min="0" max="4" value="1">
+                            <input type="hidden" name="presupuesto" value="500-2000">
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">
+                            <span>←</span>
+                            Anterior
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">
+                            Continuar
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Contact Information -->
+                <div class="form-section" data-section="3">
+                    <h2 class="section-title">Datos de contacto</h2>
+                    <p class="section-subtitle">¿Cómo podemos comunicarnos contigo?</p>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Nombre completo <span class="required">*</span></label>
+                            <input type="text" class="form-input" name="nombre" placeholder="Tu nombre" required>
+                            <span class="error-message">Este campo es obligatorio</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Correo electrónico <span class="required">*</span></label>
+                            <input type="email" class="form-input" name="email" placeholder="correo@ejemplo.com" required>
+                            <span class="error-message">Ingresa un correo válido</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Teléfono / WhatsApp <span class="required">*</span></label>
+                            <input type="tel" class="form-input" name="telefono" placeholder="+52 55 1234 5678" required>
+                            <span class="error-message">Este campo es obligatorio</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Empresa (opcional)</label>
+                            <input type="text" class="form-input" name="empresa" placeholder="Nombre de tu empresa">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Ciudad <span class="required">*</span></label>
+                            <input type="text" class="form-input" name="ciudad" placeholder="Tu ciudad" required>
+                            <span class="error-message">Este campo es obligatorio</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">¿Cómo nos encontraste?</label>
+                            <select class="form-select" name="fuente">
+                                <option value="">Selecciona</option>
+                                <option value="google">Google</option>
+                                <option value="facebook">Facebook / Instagram</option>
+                                <option value="recomendacion">Recomendación</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">
+                            <span>←</span>
+                            Anterior
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">
+                            Revisar y Enviar
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Review & Submit -->
+                <div class="form-section" data-section="4">
+                    <h2 class="section-title">Revisa tu solicitud</h2>
+                    <p class="section-subtitle">Verifica que toda la información sea correcta</p>
+                    
+                    <div class="success-details" id="reviewDetails">
+                        <!-- Se llena dinámicamente -->
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">
+                            <span>←</span>
+                            Editar
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            ✓ Enviar Cotización
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SUCCESS STATE -->
+                <div class="form-section success-section" data-section="success">
+                    <div class="success-icon">✓</div>
+                    <h2 class="success-title">¡Solicitud Lista!</h2>
+                    <p class="success-message">Tu información de cotización está lista. Copia los datos y envíanoslos por WhatsApp para recibir tu cotización personalizada.</p>
+                    
+                    <div class="success-details">
+                        <div class="success-detail-item">
+                            <span class="detail-label">Número de solicitud</span>
+                            <span class="detail-value" id="ticketNumber">GS-2026-0001</span>
+                        </div>
+                        <div class="success-detail-item">
+                            <span class="detail-label">Tiempo estimado de respuesta</span>
+                            <span class="detail-value">Menos de 24 horas</span>
+                        </div>
+                    </div>
+
+                    <!-- Caja con información para copiar -->
+                    <div class="copy-info-box">
+                        <pre id="quoteSummary">Cargando resumen...</pre>
+                    </div>
+
+                    <div class="success-buttons">
+                        <button type="button" class="btn btn-copy" id="btnCopy" onclick="copyQuoteInfo()">
+                            📋 Copiar Información de Cotización
+                        </button>
+                    </div>
+
+                    <!-- Sección WhatsApp -->
+                    <div class="whatsapp-section">
+                        <h3>📢 ¡Casi listo!</h3>
+                        <p>Después de copiar la información, haz clic en el botón para enviarla por WhatsApp y recibir tu cotización.</p>
+                        <a href="https://wa.me/message/56AISNOZMVW5N1" class="btn btn-whatsapp-large" id="btnWhatsapp" target="_blank">
+                            💬 Continuar en WhatsApp
+                        </a>
+                    </div>
+
+                    <a href="gs_landing_page.html" class="btn btn-secondary" style="margin-top: 20px;">
+                        ← Volver al inicio
+                    </a>
+                </div>
+            </form>
+
+            <!-- Trust Indicators -->
+            <div class="trust-section">
+                <div class="trust-content">
+                    <div class="trust-item">
+                        <span class="trust-icon">🔒</span>
+                        <span>Datos protegidos</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">📞</span>
+                        <span>Sin compromiso</span>
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">⭐</span>
+                        <span>+1500 clientes satisfechos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let currentStep = 1;
+        let selectedService = null;
+        const budgetRanges = [
+            'Menos de $500',
+            '$500 - $2,000',
+            '$2,000 - $5,000',
+            '$5,000 - $10,000',
+            'Más de $10,000'
+        ];
+
+        // Check for URL params (service pre-selection)
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const service = urlParams.get('servicio');
+            if (service) {
+                selectService(service);
+            }
+        });
+
+        // Service Selection
+        document.querySelectorAll('.service-option').forEach(option => {
+            option.addEventListener('click', function() {
+                selectService(this.dataset.service);
+            });
+        });
+
+        function selectService(service) {
+            // Remove previous selection
+            document.querySelectorAll('.service-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Add selection
+            const option = document.querySelector(`[data-service="${service}"]`);
+            if (option) {
+                option.classList.add('selected');
+                selectedService = service;
+                document.getElementById('btnStep1').disabled = false;
+                
+                // Show corresponding form
+                document.querySelectorAll('.dynamic-form').forEach(form => {
+                    form.style.display = 'none';
+                });
+                const dynamicForm = document.getElementById(`form-${service}`);
+                if (dynamicForm) {
+                    dynamicForm.style.display = 'block';
+                }
+            }
+        }
+
+        // Step 1 button
+        document.getElementById('btnStep1').addEventListener('click', function() {
+            if (selectedService) {
+                nextStep();
+            }
+        });
+
+        // Urgency Selection
+        document.querySelectorAll('.urgency-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.urgency-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                document.querySelector('[name="urgencia"]').value = this.dataset.urgency;
+            });
+        });
+
+        // Budget Slider
+        const budgetSlider = document.getElementById('budgetSlider');
+        const budgetValue = document.getElementById('budgetValue');
+        
+        budgetSlider.addEventListener('input', function() {
+            budgetValue.textContent = budgetRanges[this.value];
+            document.querySelector('[name="presupuesto"]').value = budgetRanges[this.value];
+        });
+
+        // Navigation
+        function nextStep() {
+            if (validateCurrentStep()) {
+                if (currentStep < 4) {
+                    currentStep++;
+                    updateUI();
+                    
+                    if (currentStep === 4) {
+                        generateReview();
+                    }
+                }
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateUI();
+            }
+        }
+
+        function updateUI() {
+            // Update sections
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelector(`[data-section="${currentStep}"]`).classList.add('active');
+
+            // Update progress
+            document.querySelectorAll('.progress-step').forEach(step => {
+                const stepNum = parseInt(step.dataset.step);
+                step.classList.remove('active', 'completed');
+                
+                if (stepNum === currentStep) {
+                    step.classList.add('active');
+                } else if (stepNum < currentStep) {
+                    step.classList.add('completed');
+                }
+            });
+
+            // Update progress line
+            const progressLine = document.getElementById('progressLine');
+            const progress = ((currentStep - 1) / 3) * 100;
+            progressLine.style.width = `${progress}%`;
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Validation
+        function validateCurrentStep() {
+            let isValid = true;
+            const currentSection = document.querySelector(`[data-section="${currentStep}"]`);
+            
+            if (currentStep === 1) {
+                return selectedService !== null;
+            }
+
+            // Validate visible required fields
+            const visibleForm = currentSection.querySelector('.dynamic-form[style*="block"]') || currentSection;
+            const requiredFields = visibleForm.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    isValid = false;
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+
+            // Email validation
+            const emailField = currentSection.querySelector('[name="email"]');
+            if (emailField && emailField.value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailField.value)) {
+                    emailField.classList.add('error');
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        // Generate Review
+        function generateReview() {
+            const form = document.getElementById('quoteForm');
+            const formData = new FormData(form);
+            const reviewDetails = document.getElementById('reviewDetails');
+            
+            const serviceNames = {
+                'tapiceria': 'Tapicería Premium',
+                'instalaciones': 'Instalaciones Profesionales',
+                'oficinas': 'Oficinas Corporativas',
+                'productos': 'Productos Premium'
+            };
+
+            let html = `
+                <div class="success-detail-item">
+                    <span class="detail-label">Servicio</span>
+                    <span class="detail-value">${serviceNames[selectedService] || selectedService}</span>
+                </div>
+                <div class="success-detail-item">
+                    <span class="detail-label">Nombre</span>
+                    <span class="detail-value">${formData.get('nombre') || '-'}</span>
+                </div>
+                <div class="success-detail-item">
+                    <span class="detail-label">Email</span>
+                    <span class="detail-value">${formData.get('email') || '-'}</span>
+                </div>
+                <div class="success-detail-item">
+                    <span class="detail-label">Teléfono</span>
+                    <span class="detail-value">${formData.get('telefono') || '-'}</span>
+                </div>
+                <div class="success-detail-item">
+                    <span class="detail-label">Ciudad</span>
+                    <span class="detail-value">${formData.get('ciudad') || '-'}</span>
+                </div>
+                <div class="success-detail-item">
+                    <span class="detail-label">Presupuesto</span>
+                    <span class="detail-value">${formData.get('presupuesto') || '$500 - $2,000'}</span>
+                </div>
+                <div class="success-detail-item">
+                    <span class="detail-label">Urgencia</span>
+                    <span class="detail-value">${formData.get('urgencia') || 'Normal'}</span>
+                </div>
+            `;
+            
+            reviewDetails.innerHTML = html;
+        }
+
+        // Form Submit
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Generate ticket number
+            const ticketNumber = 'GS-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+            document.getElementById('ticketNumber').textContent = ticketNumber;
+
+            // Show success
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelector('[data-section="success"]').classList.add('active');
+
+            // Update progress to complete
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.classList.add('completed');
+                step.classList.remove('active');
+            });
+            document.getElementById('progressLine').style.width = '100%';
+
+            // Here you would send data to server/WhatsApp/Google Sheets
+            const formData = new FormData(this);
+            console.log('Form submitted:', Object.fromEntries(formData));
+            
+            // Generate quote summary for copying
+            generateQuoteSummary(formData, ticketNumber);
+        });
+
+        // Generate Quote Summary for Copy
+        function generateQuoteSummary(formData, ticketNumber) {
+            const serviceNames = {
+                'tapiceria': 'Tapicería Premium',
+                'instalaciones': 'Instalaciones Profesionales',
+                'oficinas': 'Oficinas Corporativas',
+                'productos': 'Productos Premium'
+            };
+
+            const urgencyLabels = {
+                'normal': '🕐 Normal',
+                'pronto': '⏰ Pronto',
+                'urgente': '🔥 Urgente'
+            };
+
+            let summary = `═══════════════════════════
+🛋️ SOLICITUD DE COTIZACIÓN G&S
+═══════════════════════════
+
+📋 N° de Solicitud: ${ticketNumber}
+📅 Fecha: ${new Date().toLocaleDateString('es-ES')}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+👤 DATOS DE CONTACTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Nombre: ${formData.get('nombre') || '-'}
+• Email: ${formData.get('email') || '-'}
+• Teléfono: ${formData.get('telefono') || '-'}
+• Empresa: ${formData.get('empresa') || 'No especificada'}
+• Ciudad: ${formData.get('ciudad') || '-'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔧 SERVICIO SOLICITADO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Tipo: ${serviceNames[selectedService] || selectedService}`;
+
+            // Add service-specific details
+            if (selectedService === 'tapiceria') {
+                summary += `
+• Mueble: ${formData.get('tipo_mueble') || '-'}
+• Cantidad: ${formData.get('cantidad') || '1'} pieza(s)
+• Trabajo: ${formData.get('tipo_trabajo') || '-'}
+• Tela preferida: ${formData.get('tipo_tela') || 'Sin preferencia'}`;
+            } else if (selectedService === 'instalaciones') {
+                summary += `
+• Instalación: ${formData.get('tipo_instalacion') || '-'}
+• Cantidad: ${formData.get('cantidad') || '1'}
+• Tipo de pared: ${formData.get('tipo_pared') || 'No especificado'}
+• Ubicación: ${formData.get('ubicacion') || '-'}`;
+            } else if (selectedService === 'oficinas') {
+                summary += `
+• Proyecto: ${formData.get('tipo_proyecto') || '-'}
+• Estaciones: ${formData.get('cantidad_personas') || '1'}
+• Área: ${formData.get('area') ? formData.get('area') + ' m²' : 'No especificada'}
+• Tipo empresa: ${formData.get('tipo_empresa') || '-'}`;
+            } else if (selectedService === 'productos') {
+                summary += `
+• Producto: ${formData.get('tipo_producto') || '-'}
+• Cantidad: ${formData.get('cantidad') || '1'}
+• Aplicación: ${formData.get('aplicacion') || '-'}
+• Instalación: ${formData.get('necesita_instalacion') === 'si' ? 'Sí' : 'No'}`;
+            }
+
+            summary += `
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 DETALLES ADICIONALES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${formData.get('descripcion') || 'Sin descripción adicional'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 PRESUPUESTO Y URGENCIA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Presupuesto: ${formData.get('presupuesto') || '$500 - $2,000'}
+• Urgencia: ${urgencyLabels[formData.get('urgencia')] || '🕐 Normal'}
+• Fecha deseada: ${formData.get('fecha_entrega') || 'Flexible'}
+
+═══════════════════════════
+✨ Gracias por contactar G&S
+   Tapicería y Instalaciones
+═══════════════════════════`;
+
+            document.getElementById('quoteSummary').textContent = summary;
+            
+            // Store summary globally for copy function
+            window.quoteSummaryText = summary;
+        }
+
+        // Copy Quote Info
+        function copyQuoteInfo() {
+            const summary = window.quoteSummaryText || document.getElementById('quoteSummary').textContent;
+            
+            navigator.clipboard.writeText(summary).then(() => {
+                const btn = document.getElementById('btnCopy');
+                btn.classList.add('copied');
+                btn.innerHTML = '✓ ¡Información Copiada!';
+                
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '📋 Copiar Información de Cotización';
+                }, 3000);
+            }).catch(err => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = summary;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const btn = document.getElementById('btnCopy');
+                btn.classList.add('copied');
+                btn.innerHTML = '✓ ¡Información Copiada!';
+                
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '📋 Copiar Información de Cotización';
+                }, 3000);
+            });
+        }
+
+        // Clear errors on input
+        document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+            });
+        });
+    </script>
+</body>
+</html>
