@@ -653,6 +653,205 @@
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
         }
 
+        /* MODAL STYLES */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 24px;
+            max-width: 550px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .modal-header .success-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .modal-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .modal-content {
+            padding: 25px;
+        }
+
+        .instructions-box {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8efff 100%);
+            border: 2px solid #667eea;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .instructions-box h4 {
+            color: #667eea;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .instructions-steps {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .instruction-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-number-modal {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .step-text {
+            font-size: 0.85rem;
+            color: #4a5568;
+            text-align: center;
+            max-width: 100px;
+        }
+
+        .info-box {
+            background: #f8fafc;
+            border: 2px dashed #667eea;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 250px;
+            overflow-y: auto;
+            color: #4a5568;
+        }
+
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-modal-copy {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 100%;
+        }
+
+        .btn-modal-copy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-modal-copy.copied {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        }
+
+        .btn-modal-whatsapp {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .btn-modal-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-modal-close {
+            background: #f7fafc;
+            color: #4a5568;
+            border: 2px solid #e2e8f0;
+            width: 100%;
+        }
+
+        .btn-modal-close:hover {
+            background: #edf2f7;
+        }
+
+        @media (max-width: 600px) {
+            .instructions-steps {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .instruction-step {
+                flex-direction: row;
+                gap: 12px;
+            }
+
+            .step-text {
+                max-width: none;
+                text-align: left;
+            }
+        }
+
         /* TRUST INDICATORS */
         .trust-section {
             background: #f8fafc;
@@ -767,7 +966,7 @@
     <!-- HERO SECTION -->
     <section class="hero-quote">
         <div class="hero-quote-content">
-            <a href="gs_landing_page.html" class="back-link">← Volver al inicio</a>
+            <a href="index.html" class="back-link">← Volver al inicio</a>
             <div class="hero-badge">⚡ Respuesta en menos de 24 horas</div>
             <h1>Cotiza Tu Proyecto en Minutos</h1>
             <p>Recibe una cotización personalizada y detallada sin compromiso. Nuestros expertos analizarán tu solicitud para ofrecerte la mejor solución.</p>
@@ -1079,10 +1278,10 @@
                         <div class="form-group full-width">
                             <label class="form-label">Presupuesto estimado</label>
                             <div class="budget-display">
-                                <span class="budget-value" id="budgetValue">$500 - $2,000</span>
+                                <span class="budget-value" id="budgetValue">$500.000 - $1.500.000 COP</span>
                             </div>
                             <input type="range" class="budget-slider" id="budgetSlider" min="0" max="4" value="1">
-                            <input type="hidden" name="presupuesto" value="500-2000">
+                            <input type="hidden" name="presupuesto" value="$500.000 - $1.500.000 COP">
                         </div>
                     </div>
 
@@ -1166,13 +1365,13 @@
                         <!-- Se llena dinámicamente -->
                     </div>
 
-                    <div class="form-buttons">
+                    <div class="form-buttons" style="flex-direction: column; gap: 15px;">
                         <button type="button" class="btn btn-secondary" onclick="prevStep()">
                             <span>←</span>
                             Editar
                         </button>
-                        <button type="submit" class="btn btn-primary">
-                            ✓ Enviar Cotización
+                        <button type="button" class="btn btn-primary" onclick="openConfirmModal()">
+                            ✓ Confirmar y Continuar
                         </button>
                     </div>
                 </div>
@@ -1209,32 +1408,61 @@
                     <div class="whatsapp-section">
                         <h3>📢 ¡Casi listo!</h3>
                         <p>Después de copiar la información, haz clic en el botón para enviarla por WhatsApp y recibir tu cotización.</p>
-                        <a href="https://wa.me/message/56AISNOZMVW5N1" class="btn btn-whatsapp-large" id="btnWhatsapp" target="_blank">
+                        <button type="button" class="btn btn-whatsapp-large" id="btnWhatsapp" onclick="openWhatsApp()">
                             💬 Continuar en WhatsApp
-                        </a>
+                        </button>
                     </div>
 
-                    <a href="gs_landing_page.html" class="btn btn-secondary" style="margin-top: 20px;">
+                    <a href="index.html" class="btn btn-secondary" style="margin-top: 20px;">
                         ← Volver al inicio
                     </a>
                 </div>
             </form>
+        </div>
+    </div>
 
-            <!-- Trust Indicators -->
-            <div class="trust-section">
-                <div class="trust-content">
-                    <div class="trust-item">
-                        <span class="trust-icon">🔒</span>
-                        <span>Datos protegidos</span>
+    <!-- Modal de Confirmación -->
+    <div id="confirmModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="success-icon">✓</div>
+                <h2>¡Solicitud Lista!</h2>
+                <p>Sigue las instrucciones para completar tu pedido</p>
+            </div>
+            <div class="modal-content">
+                <!-- Instrucciones visuales -->
+                <div class="instructions-box">
+                    <h4>📋 ¿Cómo continuar?</h4>
+                    <div class="instructions-steps">
+                        <div class="instruction-step">
+                            <span class="step-number-modal">1</span>
+                            <span class="step-text">Copia la información</span>
+                        </div>
+                        <div class="instruction-step">
+                            <span class="step-number-modal">2</span>
+                            <span class="step-text">Abre WhatsApp</span>
+                        </div>
+                        <div class="instruction-step">
+                            <span class="step-number-modal">3</span>
+                            <span class="step-text">Pega y envía</span>
+                        </div>
                     </div>
-                    <div class="trust-item">
-                        <span class="trust-icon">📞</span>
-                        <span>Sin compromiso</span>
-                    </div>
-                    <div class="trust-item">
-                        <span class="trust-icon">⭐</span>
-                        <span>+1500 clientes satisfechos</span>
-                    </div>
+                </div>
+
+                <!-- Información de la cotización -->
+                <div class="info-box" id="modalQuoteText"></div>
+
+                <!-- Botones -->
+                <div class="modal-buttons">
+                    <button type="button" class="btn btn-modal-copy" id="modalCopyBtn">
+                        📋 Copiar Información del Pedido
+                    </button>
+                    <a href="https://wa.me/message/56AISNOZMVW5N1" target="_blank" class="btn btn-modal-whatsapp">
+                        💬 Continuar en WhatsApp
+                    </a>
+                    <button type="button" class="btn btn-modal-close" id="modalCloseBtn">
+                        Cerrar
+                    </button>
                 </div>
             </div>
         </div>
@@ -1244,13 +1472,162 @@
         // State
         let currentStep = 1;
         let selectedService = null;
+        let modalQuoteText = '';
         const budgetRanges = [
-            'Menos de $500',
-            '$500 - $2,000',
-            '$2,000 - $5,000',
-            '$5,000 - $10,000',
-            'Más de $10,000'
+            'Menos de $500.000 COP',
+            '$500.000 - $1.500.000 COP',
+            '$1.500.000 - $3.000.000 COP',
+            '$3.000.000 - $5.000.000 COP',
+            'Más de $5.000.000 COP'
         ];
+
+        // Modal Functions
+        function openConfirmModal() {
+            const form = document.getElementById('quoteForm');
+            const formData = new FormData(form);
+            
+            // Generate ticket number
+            const ticketNumber = 'GS-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+            
+            // Generate the summary
+            modalQuoteText = generateModalSummary(formData, ticketNumber);
+            document.getElementById('modalQuoteText').textContent = modalQuoteText;
+            
+            // Show modal
+            document.getElementById('confirmModal').classList.add('active');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').classList.remove('active');
+        }
+
+        function generateModalSummary(formData, ticketNumber) {
+            const serviceNames = {
+                'tapiceria': 'Tapicería Premium',
+                'instalaciones': 'Instalaciones Profesionales',
+                'oficinas': 'Oficinas Corporativas',
+                'productos': 'Productos Premium'
+            };
+
+            const urgencyLabels = {
+                'normal': '🕐 Normal',
+                'pronto': '⏰ Pronto',
+                'urgente': '🔥 Urgente'
+            };
+
+            let summary = `═══════════════════════════
+🛋️ SOLICITUD DE COTIZACIÓN G&S
+═══════════════════════════
+
+📋 N° de Solicitud: ${ticketNumber}
+📅 Fecha: ${new Date().toLocaleDateString('es-CO')}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+👤 DATOS DE CONTACTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Nombre: ${formData.get('nombre') || '-'}
+• Email: ${formData.get('email') || '-'}
+• Teléfono: ${formData.get('telefono') || '-'}
+• Empresa: ${formData.get('empresa') || 'No especificada'}
+• Ciudad: ${formData.get('ciudad') || '-'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔧 SERVICIO SOLICITADO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Tipo: ${serviceNames[selectedService] || selectedService}`;
+
+            // Add service-specific details
+            if (selectedService === 'tapiceria') {
+                summary += `
+• Mueble: ${formData.get('tipo_mueble') || '-'}
+• Cantidad: ${formData.get('cantidad') || '1'} pieza(s)
+• Trabajo: ${formData.get('tipo_trabajo') || '-'}
+• Tela preferida: ${formData.get('tipo_tela') || 'Sin preferencia'}`;
+            } else if (selectedService === 'instalaciones') {
+                summary += `
+• Instalación: ${formData.get('tipo_instalacion') || '-'}
+• Cantidad: ${formData.get('cantidad') || '1'}
+• Tipo de pared: ${formData.get('tipo_pared') || 'No especificado'}
+• Ubicación: ${formData.get('ubicacion') || '-'}`;
+            } else if (selectedService === 'oficinas') {
+                summary += `
+• Proyecto: ${formData.get('tipo_proyecto') || '-'}
+• Estaciones: ${formData.get('cantidad_personas') || '1'}
+• Área: ${formData.get('area') ? formData.get('area') + ' m²' : 'No especificada'}
+• Tipo empresa: ${formData.get('tipo_empresa') || '-'}`;
+            } else if (selectedService === 'productos') {
+                summary += `
+• Producto: ${formData.get('tipo_producto') || '-'}
+• Cantidad: ${formData.get('cantidad') || '1'}
+• Aplicación: ${formData.get('aplicacion') || '-'}
+• Instalación: ${formData.get('necesita_instalacion') === 'si' ? 'Sí' : 'No'}`;
+            }
+
+            summary += `
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 DETALLES ADICIONALES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${formData.get('descripcion') || 'Sin descripción adicional'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 PRESUPUESTO Y URGENCIA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Presupuesto: ${formData.get('presupuesto') || '$500.000 - $1.500.000 COP'}
+• Urgencia: ${urgencyLabels[formData.get('urgencia')] || '🕐 Normal'}
+• Fecha deseada: ${formData.get('fecha_entrega') || 'Flexible'}
+
+═══════════════════════════
+✨ Gracias por contactar G&S
+   Tapicería y Instalaciones
+═══════════════════════════`;
+
+            return summary;
+        }
+
+        function copyModalQuote() {
+            navigator.clipboard.writeText(modalQuoteText).then(() => {
+                const btn = document.getElementById('modalCopyBtn');
+                btn.innerHTML = '✅ ¡Copiado al Portapapeles!';
+                btn.classList.add('copied');
+                
+                setTimeout(() => {
+                    btn.innerHTML = '📋 Copiar Información del Pedido';
+                    btn.classList.remove('copied');
+                }, 3000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = modalQuoteText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const btn = document.getElementById('modalCopyBtn');
+                btn.innerHTML = '✅ ¡Copiado al Portapapeles!';
+                btn.classList.add('copied');
+                
+                setTimeout(() => {
+                    btn.innerHTML = '📋 Copiar Información del Pedido';
+                    btn.classList.remove('copied');
+                }, 3000);
+            });
+        }
+
+        // Modal Event Listeners
+        document.getElementById('modalCopyBtn').addEventListener('click', copyModalQuote);
+        document.getElementById('modalCloseBtn').addEventListener('click', closeConfirmModal);
+        document.getElementById('confirmModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeConfirmModal();
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeConfirmModal();
+            }
+        });
 
         // Check for URL params (service pre-selection)
         document.addEventListener('DOMContentLoaded', function() {
@@ -1439,7 +1816,7 @@
                 </div>
                 <div class="success-detail-item">
                     <span class="detail-label">Presupuesto</span>
-                    <span class="detail-value">${formData.get('presupuesto') || '$500 - $2,000'}</span>
+                    <span class="detail-value">${formData.get('presupuesto') || '$500.000 - $1.500.000 COP'}</span>
                 </div>
                 <div class="success-detail-item">
                     <span class="detail-label">Urgencia</span>
@@ -1552,7 +1929,7 @@ ${formData.get('descripcion') || 'Sin descripción adicional'}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💰 PRESUPUESTO Y URGENCIA
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Presupuesto: ${formData.get('presupuesto') || '$500 - $2,000'}
+• Presupuesto: ${formData.get('presupuesto') || '$500.000 - $1.500.000 COP'}
 • Urgencia: ${urgencyLabels[formData.get('urgencia')] || '🕐 Normal'}
 • Fecha deseada: ${formData.get('fecha_entrega') || 'Flexible'}
 
@@ -1596,6 +1973,153 @@ ${formData.get('descripcion') || 'Sin descripción adicional'}
                 setTimeout(() => {
                     btn.classList.remove('copied');
                     btn.innerHTML = '📋 Copiar Información de Cotización';
+                }, 3000);
+            });
+        }
+
+        // Open WhatsApp with quote info
+        function openWhatsApp() {
+            const summary = window.quoteSummaryText || document.getElementById('quoteSummary').textContent;
+            const encodedMessage = encodeURIComponent(summary);
+            const whatsappURL = `https://wa.me/message/56AISNOZMVW5N1`;
+            
+            // First copy to clipboard
+            navigator.clipboard.writeText(summary).then(() => {
+                const btn = document.getElementById('btnCopy');
+                btn.classList.add('copied');
+                btn.innerHTML = '✓ ¡Información Copiada!';
+            }).catch(() => {
+                // Fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = summary;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            });
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Copy and prepare quote from Step 4 (before going to success)
+        function copyAndPrepare() {
+            const form = document.getElementById('quoteForm');
+            const formData = new FormData(form);
+            
+            // Generate ticket number
+            const ticketNumber = 'GS-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+            
+            // Generate the summary
+            const serviceNames = {
+                'tapiceria': 'Tapicería Premium',
+                'instalaciones': 'Instalaciones Profesionales',
+                'oficinas': 'Oficinas Corporativas',
+                'productos': 'Productos Premium'
+            };
+
+            const urgencyLabels = {
+                'normal': '🕐 Normal',
+                'pronto': '⏰ Pronto',
+                'urgente': '🔥 Urgente'
+            };
+
+            let summary = `═══════════════════════════
+🛋️ SOLICITUD DE COTIZACIÓN G&S
+═══════════════════════════
+
+📋 N° de Solicitud: ${ticketNumber}
+📅 Fecha: ${new Date().toLocaleDateString('es-ES')}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+👤 DATOS DE CONTACTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Nombre: ${formData.get('nombre') || '-'}
+• Email: ${formData.get('email') || '-'}
+• Teléfono: ${formData.get('telefono') || '-'}
+• Empresa: ${formData.get('empresa') || 'No especificada'}
+• Ciudad: ${formData.get('ciudad') || '-'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔧 SERVICIO SOLICITADO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Tipo: ${serviceNames[selectedService] || selectedService}`;
+
+            // Add service-specific details
+            if (selectedService === 'tapiceria') {
+                summary += `
+• Mueble: ${formData.get('tipo_mueble') || '-'}
+• Cantidad: ${formData.get('cantidad') || '1'} pieza(s)
+• Trabajo: ${formData.get('tipo_trabajo') || '-'}
+• Tela preferida: ${formData.get('tipo_tela') || 'Sin preferencia'}`;
+            } else if (selectedService === 'instalaciones') {
+                summary += `
+• Instalación: ${formData.get('tipo_instalacion') || '-'}
+• Cantidad: ${formData.get('cantidad') || '1'}
+• Tipo de pared: ${formData.get('tipo_pared') || 'No especificado'}
+• Ubicación: ${formData.get('ubicacion') || '-'}`;
+            } else if (selectedService === 'oficinas') {
+                summary += `
+• Proyecto: ${formData.get('tipo_proyecto') || '-'}
+• Estaciones: ${formData.get('cantidad_personas') || '1'}
+• Área: ${formData.get('area') ? formData.get('area') + ' m²' : 'No especificada'}
+• Tipo empresa: ${formData.get('tipo_empresa') || '-'}`;
+            } else if (selectedService === 'productos') {
+                summary += `
+• Producto: ${formData.get('tipo_producto') || '-'}
+• Cantidad: ${formData.get('cantidad') || '1'}
+• Aplicación: ${formData.get('aplicacion') || '-'}
+• Instalación: ${formData.get('necesita_instalacion') === 'si' ? 'Sí' : 'No'}`;
+            }
+
+            summary += `
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 DETALLES ADICIONALES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${formData.get('descripcion') || 'Sin descripción adicional'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 PRESUPUESTO Y URGENCIA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Presupuesto: ${formData.get('presupuesto') || '$500.000 - $1.500.000 COP'}
+• Urgencia: ${urgencyLabels[formData.get('urgencia')] || '🕐 Normal'}
+• Fecha deseada: ${formData.get('fecha_entrega') || 'Flexible'}
+
+═══════════════════════════
+✨ Gracias por contactar G&S
+   Tapicería y Instalaciones
+═══════════════════════════`;
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(summary).then(() => {
+                // Show success feedback
+                const btn = event.target;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✓ ¡Información Copiada!';
+                btn.style.background = '#48bb78';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                }, 3000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = summary;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const btn = event.target;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✓ ¡Información Copiada!';
+                btn.style.background = '#48bb78';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
                 }, 3000);
             });
         }
