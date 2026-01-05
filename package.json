@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "G&S Landing Page - Sitio web estático",
   "scripts": {
-    "start": "npx serve -s . -l 8080 -c serve.json"
+    "start": "npx serve .",
+    "build": "echo 'No build step required'"
+  },
+  "dependencies": {
+    "serve": "^14.2.0"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=18.0.0"
   }
 }
