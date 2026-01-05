@@ -1496,7 +1496,7 @@
             <!-- Video Section -->
             <div class="vip-video-section" id="vipVideoSection">
                 <div class="vip-video-container" onclick="showVipGallery()">
-                    <video class="vip-video" autoplay muted loop playsinline>
+                    <video class="vip-video" id="vipVideo" autoplay muted loop playsinline webkit-playsinline>
                         <source src="images/restauraciones/restauracionvideogif1.mp4" type="video/mp4">
                         Tu navegador no soporta video.
                     </video>
@@ -1532,21 +1532,50 @@
             document.body.style.overflow = 'hidden';
             // Reset to video view
             showVipVideo();
+            // Forzar reproducción del video en móviles
+            playVipVideo();
         }
 
         function closeVipModal() {
             document.getElementById('vipModal').classList.remove('active');
             document.body.style.overflow = '';
+            // Pausar video cuando se cierra el modal
+            const video = document.getElementById('vipVideo');
+            if (video) {
+                video.pause();
+            }
         }
 
         function showVipGallery() {
             document.getElementById('vipVideoSection').style.display = 'none';
             document.getElementById('vipGallery').classList.add('active');
+            // Pausar video cuando se muestra la galería
+            const video = document.getElementById('vipVideo');
+            if (video) {
+                video.pause();
+            }
         }
 
         function showVipVideo() {
             document.getElementById('vipVideoSection').style.display = 'block';
             document.getElementById('vipGallery').classList.remove('active');
+            // Reproducir video cuando se vuelve a mostrar
+            playVipVideo();
+        }
+
+        // Función para forzar reproducción del video en móviles
+        function playVipVideo() {
+            const video = document.getElementById('vipVideo');
+            if (video) {
+                video.muted = true; // Asegurar que esté silenciado (requerido para autoplay)
+                video.play().catch(function(error) {
+                    console.log('Autoplay bloqueado:', error);
+                    // Si falla, intentar de nuevo con un pequeño retraso
+                    setTimeout(function() {
+                        video.play().catch(function() {});
+                    }, 100);
+                });
+            }
         }
 
         // Lightbox Functions
