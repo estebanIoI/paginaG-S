@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo G&S Tapicería | Muebles de Calidad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #2d3436;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #f8f9fa;
+        }
+
+        /* === HEADER === */
+        .header {
+            background: linear-gradient(135deg, #2d3436 0%, #3d4348 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255,168,107,0.1) 0%, transparent 70%);
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background: #ffa86b;
+            color: #2d3436;
+        }
+
+        /* === BANNER OFERTA === */
+        .offer-banner {
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            font-weight: 600;
+            animation: pulse-banner 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-banner {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+
+        .offer-banner span {
+            font-size: 1.3em;
+        }
+
+        /* === CONTENEDOR PRINCIPAL === */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2em;
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #636e72;
+            font-size: 1.1em;
+        }
+
+        /* === GRID DE PRODUCTOS === */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* === TARJETA DE PRODUCTO === */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 700;
+            z-index: 10;
+            animation: shake 3s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            5% { transform: rotate(-3deg); }
+            10% { transform: rotate(3deg); }
+            15% { transform: rotate(0deg); }
+        }
+
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-image-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .quick-view {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(45, 52, 54, 0.9);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .quick-view {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-category {
+            color: #ffa86b;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2d3436;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .product-desc {
+            color: #636e72;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .product-features {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .feature-tag {
+            background: #f0f3f5;
+            color: #2d3436;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .product-pricing {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: #b2bec3;
+            font-size: 1em;
+        }
+
+        .price-current {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: #27ae60;
+        }
+
+        .price-savings {
+            background: #27ae60;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 700;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            flex: 1;
+            background: linear-gradient(135deg, #ffa86b, #ff8c42);
+            color: white;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(255,140,66,0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f3f5;
+            color: #2d3436;
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e4e7;
+        }
+
+        /* === SECCIÓN PRÓXIMAMENTE === */
+        .coming-soon {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 20px;
+            margin-top: 50px;
+        }
+
+        .coming-soon h3 {
+            font-size: 1.8em;
+            color: #2d3436;
+            margin-bottom: 15px;
+        }
+
+        .coming-soon p {
+            color: #636e72;
+            font-size: 1.1em;
+            max-width: 500px;
+            margin: 0 auto 25px;
+        }
+
+        .coming-soon .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .coming-soon .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(37,211,102,0.3);
+        }
+
+        /* === FOOTER === */
+        .footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-logo {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ffa86b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.6em;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">🛋️</div>
+            <h1>Catálogo G&S Tapicería</h1>
+            <p>Muebles de calidad con diseño ergonómico para tu hogar</p>
+            <nav class="nav-links">
+                <a href="index.html">🏠 Inicio</a>
+                <a href="cotizacion.html">📝 Cotizar</a>
+                <a href="https://wa.me/message/ERBM7HKKUMXPO1" target="_blank">💬 WhatsApp</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner de oferta -->
+    <div class="offer-banner">
+        <span>🔥</span> ¡OFERTAS ESPECIALES! Precios directos de fábrica - Envío a todo Colombia <span>🔥</span>
+    </div>
+
+    <!-- Contenido principal -->
+    <main class="main-container">
+        <div class="section-title">
+            <h2>Nuestros Productos</h2>
+            <p>Descubre nuestra colección de muebles diseñados para tu comodidad</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- Producto 1: Combo Sofá + Puff Gris -->
+            <article class="product-card">
+                <span class="product-badge">🔥 OFERTA</span>
+                <div class="product-image-wrapper">
+                    <img src="images/productos/mueblegris1/sillongris+puff_PROD1.png" alt="Combo Sofá + Puff Gris con Soporte Lumbar" class="product-image">
+                    <a href="mueblegris1.html" class="quick-view">👁️ Ver Detalles</a>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Sofás Ergonómicos</div>
+                    <h3 class="product-name">Combo Sofá + Puff con Soporte Lumbar</h3>
+                    <p class="product-desc">Sofá con riñoneras ergonómicas integradas + Puff a juego. Diseño elegante en tela gris premium.</p>
+                    <div class="product-features">
+                        <span class="feature-tag">🪑 Ergonómico</span>
+                        <span class="feature-tag">🎨 Gris</span>
+                        <span class="feature-tag">📦 + Puff</span>
+                    </div>
+                    <div class="product-pricing">
+                        <span class="price-original">$1.500.000</span>
+                        <span class="price-current">$900.000</span>
+                        <span class="price-savings">-40%</span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="checkout.html?product=Combo%20Sof%C3%A1%20%2B%20Puff%20G%26S%20con%20Soporte%20Lumbar&price=900000&priceOriginal=1500000&image=images/productos/mueblegris1/sillongris%2Bpuff_PROD1.png&desc=Sof%C3%A1%20con%20ri%C3%B1oneras%20ergon%C3%B3micas%20integradas%20%2B%20Puff%20a%20juego&back=catalogo.html" class="btn-primary">
+                            🛒 Comprar
+                        </a>
+                        <a href="mueblegris1.html" class="btn-secondary">Ver más</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Aquí se agregarán más productos en el futuro -->
+
+        </div>
+
+        <!-- Sección próximamente -->
+        <section class="coming-soon">
+            <h3>🚀 Más Productos Próximamente</h3>
+            <p>Estamos trabajando en nuevos diseños exclusivos. ¿Tienes algo en mente? ¡Contáctanos!</p>
+            <a href="https://wa.me/message/ERBM7HKKUMXPO1" class="whatsapp-btn" target="_blank">
+                💬 Consultar por WhatsApp
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">🛋️ G&S Tapicería</div>
+        <p>Muebles de calidad hechos con pasión en Colombia</p>
+        <div class="footer-links">
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="cotizacion.html">Cotizar</a>
+            <a href="https://wa.me/message/ERBM7HKKUMXPO1" target="_blank">WhatsApp</a>
+        </div>
+    </footer>
+
+    <script>
+        // Animación de entrada para las tarjetas
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

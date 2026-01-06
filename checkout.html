@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G&S - Finalizar Pedido</title>
+    <title>G&S - Finalizar Compra</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -86,6 +86,70 @@
             font-size: 1rem;
         }
 
+        /* Resumen del producto */
+        .product-summary {
+            background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+            padding: 25px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .product-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .product-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
+            object-fit: cover;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border: 3px solid #fff;
+        }
+
+        .product-img-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .product-details h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .product-details .product-desc {
+            color: #636e72;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: #2d3436;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .product-price span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #636e72;
+        }
+
         .form-section {
             padding: 30px;
         }
@@ -142,8 +206,96 @@
         }
 
         .form-textarea {
-            min-height: 120px;
+            min-height: 100px;
             resize: vertical;
+        }
+
+        /* Selector de cantidad */
+        .quantity-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+
+        .quantity-label {
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .qty-btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            font-size: 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .qty-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .qty-input {
+            width: 80px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px;
+            font-family: inherit;
+        }
+
+        .qty-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* Totales */
+        .total-section {
+            background: linear-gradient(135deg, #2d3436 0%, #3d4348 100%);
+            padding: 25px;
+            border-radius: 16px;
+            margin: 20px 0;
+            color: white;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .total-row.final {
+            font-size: 1.4rem;
+            font-weight: 700;
+            padding-top: 15px;
+            border-top: 2px dashed rgba(255,255,255,0.3);
+            margin-top: 15px;
+        }
+
+        .total-row .price {
+            color: #ffa86b;
+            font-weight: 700;
         }
 
         /* Botones */
@@ -165,14 +317,14 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ffa86b 0%, #ff8b3d 100%);
             color: white;
-            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 6px 25px rgba(255, 168, 107, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 35px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 10px 35px rgba(255, 168, 107, 0.5);
         }
 
         .btn-copy {
@@ -280,7 +432,24 @@
             padding: 25px;
         }
 
-        /* Instrucciones */
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            animation: scaleIn 0.4s ease;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
         .instructions-box {
             background: linear-gradient(135deg, #f0f4ff 0%, #e8efff 100%);
             border: 2px solid #667eea;
@@ -294,10 +463,6 @@
             color: #667eea;
             font-size: 1rem;
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
         }
 
         .instructions-steps {
@@ -334,7 +499,6 @@
             max-width: 100px;
         }
 
-        /* Info Box para copiar */
         .info-box {
             background: #f8fafc;
             border: 2px dashed #667eea;
@@ -357,7 +521,6 @@
             gap: 12px;
         }
 
-        /* Notas */
         .note {
             background: #fffbeb;
             border: 1px solid #f59e0b;
@@ -370,25 +533,6 @@
 
         .note strong {
             color: #78350f;
-        }
-
-        /* Success icon */
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2.5rem;
-            animation: scaleIn 0.4s ease;
-        }
-
-        @keyframes scaleIn {
-            from { transform: scale(0); }
-            to { transform: scale(1); }
         }
 
         /* Loading */
@@ -443,6 +587,11 @@
                 font-size: 1.5rem;
             }
 
+            .product-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
             .form-section {
                 padding: 20px;
             }
@@ -470,19 +619,32 @@
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-btn">
-            ← Volver al Inicio
+        <a href="index.html" class="back-btn" id="backBtn">
+            ← Volver
         </a>
 
         <div class="checkout-card">
             <div class="checkout-header">
-                <h1>🛋️ Solicitud de Pedido</h1>
-                <p>Completa tus datos para procesar tu solicitud</p>
+                <h1>🛒 Finalizar Compra</h1>
+                <p>Completa tus datos para procesar tu pedido</p>
+            </div>
+
+            <!-- Resumen del Producto -->
+            <div class="product-summary">
+                <div class="product-info">
+                    <img src="" alt="Producto" class="product-img" id="productImg" style="display: none;">
+                    <div class="product-img-placeholder" id="productPlaceholder">🛋️</div>
+                    <div class="product-details">
+                        <h3 id="productName">Producto G&S</h3>
+                        <p class="product-desc" id="productDesc">Producto de alta calidad</p>
+                        <div class="product-price" id="productPrice">Cotizar</div>
+                    </div>
+                </div>
             </div>
 
             <form id="checkoutForm">
                 <div class="form-section">
-                    <h3 class="section-title">👤 Datos Personales</h3>
+                    <h3 class="section-title">👤 Datos del Comprador</h3>
                     
                     <div class="form-group">
                         <label>Nombre Completo <span class="required">*</span></label>
@@ -501,59 +663,85 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Ciudad <span class="required">*</span></label>
-                        <input type="text" id="ciudad" class="form-control" placeholder="Tu ciudad" required>
+                        <label>Cédula / Documento <span class="required">*</span></label>
+                        <input type="text" id="cedula" class="form-control" placeholder="Número de documento" required>
+                    </div>
+                </div>
+
+                <div class="form-section" style="padding-top: 0;">
+                    <h3 class="section-title">📍 Datos de Envío</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Departamento <span class="required">*</span></label>
+                            <select id="departamento" class="form-control" required>
+                                <option value="">Selecciona departamento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Municipio <span class="required">*</span></label>
+                            <select id="ciudad" class="form-control" required disabled>
+                                <option value="">Primero selecciona departamento</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Dirección de Entrega <span class="required">*</span></label>
+                        <input type="text" id="direccion" class="form-control" placeholder="Calle, número, apartamento..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Barrio</label>
+                        <input type="text" id="barrio" class="form-control" placeholder="Nombre del barrio">
                     </div>
                 </div>
 
                 <div class="form-section" style="padding-top: 0;">
                     <h3 class="section-title">📦 Detalles del Pedido</h3>
                     
-                    <div class="form-group">
-                        <label>Tipo de Servicio <span class="required">*</span></label>
-                        <select id="tipoServicio" class="form-control" required>
-                            <option value="">Selecciona una opción</option>
-                            <option value="Tapicería Premium">🛋️ Tapicería Premium</option>
-                            <option value="Instalaciones">🔨 Instalaciones</option>
-                            <option value="Oficinas Corporativas">🏢 Oficinas Corporativas</option>
-                            <option value="Productos Premium">🛒 Productos Premium</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Descripción del pedido <span class="required">*</span></label>
-                        <textarea id="descripcion" class="form-control form-textarea" placeholder="Describe qué necesitas: tipo de mueble, colores, medidas, cantidad..." required></textarea>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Presupuesto Estimado</label>
-                            <select id="presupuesto" class="form-control">
-                                <option value="Por definir">Por definir</option>
-                                <option value="Menos de $500.000 COP">Menos de $500.000 COP</option>
-                                <option value="$500.000 - $1.500.000 COP">$500.000 - $1.500.000 COP</option>
-                                <option value="$1.500.000 - $3.000.000 COP">$1.500.000 - $3.000.000 COP</option>
-                                <option value="$3.000.000 - $5.000.000 COP">$3.000.000 - $5.000.000 COP</option>
-                                <option value="Más de $5.000.000 COP">Más de $5.000.000 COP</option>
-                            </select>
+                    <!-- Selector de cantidad -->
+                    <div class="quantity-section">
+                        <span class="quantity-label">Cantidad:</span>
+                        <div class="quantity-selector">
+                            <button type="button" class="qty-btn" onclick="changeQty(-1)">−</button>
+                            <input type="number" id="quantity" class="qty-input" value="1" min="1" max="99" onchange="updateTotals()">
+                            <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
                         </div>
-                        <div class="form-group">
-                            <label>Urgencia</label>
-                            <select id="urgencia" class="form-control">
-                                <option value="Normal">🕐 Normal</option>
-                                <option value="Pronto">⏰ Pronto</option>
-                                <option value="Urgente">🔥 Urgente</option>
-                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Notas adicionales</label>
+                        <textarea id="notas" class="form-control form-textarea" placeholder="¿Alguna especificación especial? Color, medidas, observaciones..."></textarea>
+                    </div>
+
+                    <!-- Totales -->
+                    <div class="total-section">
+                        <div class="total-row">
+                            <span>Producto:</span>
+                            <span id="summaryProduct">-</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Precio unitario:</span>
+                            <span class="price" id="summaryUnitPrice">Cotizar</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Cantidad:</span>
+                            <span id="summaryQty">1</span>
+                        </div>
+                        <div class="total-row final">
+                            <span>TOTAL:</span>
+                            <span class="price" id="summaryTotal">Cotizar</span>
                         </div>
                     </div>
 
                     <div class="note">
-                        💡 <strong>Importante:</strong> Al enviar, podrás copiar tu pedido y enviarlo por WhatsApp para recibir atención personalizada.
+                        💡 <strong>Importante:</strong> Al confirmar, podrás copiar tu pedido y enviarlo por WhatsApp para coordinar el pago y envío.
                     </div>
 
                     <div class="btn-group">
                         <button type="submit" class="btn btn-primary">
-                            ✓ Confirmar y Continuar
+                            ✓ Confirmar Pedido
                         </button>
                     </div>
                 </div>
@@ -564,7 +752,7 @@
     <!-- Loading Overlay -->
     <div id="loadingOverlay" class="loading-overlay">
         <div class="loading-spinner"></div>
-        <div class="loading-text">Procesando tu solicitud...</div>
+        <div class="loading-text">Procesando tu pedido...</div>
     </div>
 
     <!-- Modal de Pedido Confirmado -->
@@ -572,17 +760,16 @@
         <div class="modal">
             <div class="modal-header">
                 <div class="success-icon">✓</div>
-                <h2>¡Solicitud Lista!</h2>
-                <p>Sigue las instrucciones para completar tu pedido</p>
+                <h2>¡Pedido Listo!</h2>
+                <p>Sigue las instrucciones para completar tu compra</p>
             </div>
             <div class="modal-content">
-                <!-- Instrucciones visuales -->
                 <div class="instructions-box">
                     <h4>📋 ¿Cómo continuar?</h4>
                     <div class="instructions-steps">
                         <div class="instruction-step">
                             <span class="step-number">1</span>
-                            <span class="step-text">Copia la información</span>
+                            <span class="step-text">Copia el pedido</span>
                         </div>
                         <div class="instruction-step">
                             <span class="step-number">2</span>
@@ -595,16 +782,14 @@
                     </div>
                 </div>
 
-                <!-- Información del pedido -->
                 <div class="info-box" id="orderInfoText"></div>
 
-                <!-- Botones -->
                 <div class="modal-buttons">
                     <button type="button" class="btn btn-copy" id="copyBtn">
-                        📋 Copiar Información del Pedido
+                        📋 Copiar Pedido
                     </button>
                     <a href="https://wa.me/message/ERBM7HKKUMXPO1" target="_blank" class="btn btn-whatsapp" id="whatsappBtn">
-                        💬 Continuar en WhatsApp
+                        💬 Enviar por WhatsApp
                     </a>
                     <button type="button" class="btn btn-secondary" id="closeModalBtn">
                         Cerrar
@@ -615,19 +800,167 @@
     </div>
 
     <script>
-        // Variables globales
+        // === OBTENER DATOS DEL PRODUCTO DESDE URL ===
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = decodeURIComponent(urlParams.get('product') || 'Producto G&S');
+        const productPrice = parseInt(urlParams.get('price')) || 0;
+        const productPriceOriginal = parseInt(urlParams.get('priceOriginal')) || 0;
+        const productImage = decodeURIComponent(urlParams.get('image') || '');
+        const productDesc = decodeURIComponent(urlParams.get('desc') || 'Producto de alta calidad G&S Tapicería');
+        const backUrl = decodeURIComponent(urlParams.get('back') || 'index.html');
+
+        // === DATOS DE COLOMBIA: DEPARTAMENTOS Y MUNICIPIOS ===
+        const colombiaData = {
+            "Amazonas": ["Leticia", "Puerto Nariño", "El Encanto", "La Chorrera", "La Pedrera", "Mirití Paraná", "Puerto Alegría", "Puerto Arica", "Puerto Santander", "Tarapacá"],
+            "Antioquia": ["Medellín", "Bello", "Itagüí", "Envigado", "Apartadó", "Turbo", "Rionegro", "Caucasia", "Copacabana", "La Estrella", "Sabaneta", "Caldas", "Girardota", "Barbosa", "Marinilla", "El Carmen de Viboral", "La Ceja", "El Retiro", "Guarne", "Puerto Berrío", "Yarumal", "Santa Rosa de Osos", "Segovia", "Andes", "Jardín", "Ciudad Bolívar", "Urrao", "Santa Fe de Antioquia", "Fredonia", "Jericó", "Necoclí", "Chigorodó", "Carepa"],
+            "Arauca": ["Arauca", "Arauquita", "Cravo Norte", "Fortul", "Puerto Rondón", "Saravena", "Tame"],
+            "Atlántico": ["Barranquilla", "Soledad", "Malambo", "Sabanalarga", "Baranoa", "Puerto Colombia", "Galapa", "Palmar de Varela", "Santo Tomás", "Polonuevo", "Ponedera", "Sabanagrande", "Candelaria", "Campo de la Cruz", "Manatí", "Repelón", "Santa Lucía", "Suan", "Tubará", "Usiacurí", "Juan de Acosta", "Piojó", "Luruaco"],
+            "Bogotá D.C.": ["Bogotá"],
+            "Bolívar": ["Cartagena", "Magangué", "Turbaco", "Arjona", "El Carmen de Bolívar", "San Juan Nepomuceno", "María la Baja", "Mompós", "Simití", "San Pablo", "Santa Rosa del Sur", "Morales", "Achí", "Calamar", "Clemencia", "Córdoba", "El Guamo", "Margarita", "Pinillos", "San Cristóbal", "San Estanislao", "San Fernando", "San Jacinto", "Soplaviento", "Talaigua Nuevo", "Tiquisio", "Villanueva", "Zambrano"],
+            "Boyacá": ["Tunja", "Duitama", "Sogamoso", "Chiquinquirá", "Paipa", "Puerto Boyacá", "Villa de Leyva", "Moniquirá", "Garagoa", "Miraflores", "Nobsa", "Tibasosa", "Firavitoba", "Iza", "Tota", "Pesca", "Aquitania", "Chita", "Socha", "Paz de Río", "Belén", "Cerinza", "Santa Rosa de Viterbo", "Boavita", "El Cocuy", "Güicán", "Ráquira", "Sutamarchán", "Saboyá", "Samacá", "Ventaquemada", "Jenesano", "Ramiriquí", "Tenza"],
+            "Caldas": ["Manizales", "La Dorada", "Chinchiná", "Villamaría", "Riosucio", "Anserma", "Supía", "Aguadas", "Pácora", "Salamina", "Aranzazu", "Filadelfia", "La Merced", "Marmato", "Neira", "Palestina", "Pensilvania", "Manzanares", "Marquetalia", "Marulanda", "Samaná", "Victoria", "Belalcázar", "Risaralda", "San José", "Viterbo", "Norcasia"],
+            "Caquetá": ["Florencia", "San Vicente del Caguán", "Puerto Rico", "El Doncello", "El Paujil", "Cartagena del Chairá", "Montañita", "Belén de los Andaquíes", "Albania", "Curillo", "Milán", "Morelia", "San José del Fragua", "Solano", "Solita", "Valparaíso"],
+            "Casanare": ["Yopal", "Aguazul", "Villanueva", "Tauramena", "Paz de Ariporo", "Pore", "Trinidad", "San Luis de Palenque", "Orocué", "Nunchía", "Hato Corozal", "Támara", "Monterrey", "Sabanalarga", "Recetor", "Chámeza", "La Salina", "Sácama", "Maní"],
+            "Cauca": ["Popayán", "Santander de Quilichao", "Puerto Tejada", "Patía", "Piendamó", "Cajibío", "Silvia", "Timbío", "Bolívar", "Miranda", "Corinto", "Caloto", "Guachené", "Villarrica", "Padilla", "Buenos Aires", "Suárez", "Morales", "El Tambo", "Argelia", "Balboa", "Mercaderes", "La Sierra", "La Vega", "Almaguer", "San Sebastián", "Rosas", "Sotará", "Puracé", "Totoró", "Inzá", "Páez", "Jambaló", "Toribío", "Caldono", "Timbiquí", "Guapi", "López de Micay"],
+            "Cesar": ["Valledupar", "Aguachica", "Agustín Codazzi", "Bosconia", "Chimichagua", "Chiriguaná", "Curumaní", "El Copey", "El Paso", "Gamarra", "González", "La Gloria", "La Jagua de Ibirico", "La Paz", "Manaure Balcón del Cesar", "Pailitas", "Pelaya", "Pueblo Bello", "Río de Oro", "San Alberto", "San Diego", "San Martín", "Tamalameque"],
+            "Chocó": ["Quibdó", "Istmina", "Tadó", "Condoto", "Bahía Solano", "Nuquí", "Acandí", "Unguía", "Riosucio", "Carmen del Darién", "Bojayá", "Medio Atrato", "Atrato", "Lloró", "Bagadó", "Certeguí", "Nóvita", "San José del Palmar", "El Carmen de Atrato", "Juradó", "Alto Baudó", "Bajo Baudó", "Medio Baudó"],
+            "Córdoba": ["Montería", "Cereté", "Sahagún", "Lorica", "Montelíbano", "Planeta Rica", "Tierralta", "Ciénaga de Oro", "San Andrés de Sotavento", "San Pelayo", "San Carlos", "Chinú", "Puerto Escondido", "Moñitos", "Los Córdobas", "Canalete", "Valencia", "Pueblo Nuevo", "La Apartada", "Buenavista", "Ayapel", "San Bernardo del Viento", "Purísima", "Momil", "Chimá", "Cotorra", "San Antero", "Tuchín"],
+            "Cundinamarca": ["Soacha", "Facatativá", "Zipaquirá", "Chía", "Fusagasugá", "Girardot", "Madrid", "Mosquera", "Funza", "Cajicá", "Sibaté", "Tocancipá", "Sopó", "La Calera", "Cota", "Tabio", "Tenjo", "Subachoque", "El Rosal", "Bojacá", "Cachipay", "Anolaima", "La Mesa", "Anapoima", "Apulo", "Viotá", "Tocaima", "Agua de Dios", "Ricaurte", "Nilo", "Villeta", "Útica", "Nimaima", "Nocaima", "La Palma", "Pacho", "Zipacón", "Guaduas", "Puerto Salgar", "Ubaté", "Nemocón", "Cogua", "Gachancipá", "Suesca", "Sesquilé", "Chocontá", "Villapinzón", "Guatavita", "Guasca", "Junín", "Gachalá", "Medina", "Paratebueno", "Arbeláez", "Pasca", "Silvania", "Granada", "La Vega", "Fómeque", "Choachí", "Ubaque", "Cáqueza", "Chipaque", "Une"],
+            "Guainía": ["Inírida", "Barranco Minas", "Mapiripana", "San Felipe", "Puerto Colombia", "La Guadalupe", "Cacahual", "Pana Pana", "Morichal"],
+            "Guaviare": ["San José del Guaviare", "Calamar", "El Retorno", "Miraflores"],
+            "Huila": ["Neiva", "Pitalito", "Garzón", "La Plata", "Campoalegre", "Palermo", "Algeciras", "Colombia", "Rivera", "Aipe", "Villavieja", "Tello", "Baraya", "Yaguará", "Hobo", "Gigante", "Agrado", "Altamira", "Guadalupe", "Suaza", "Acevedo", "Timaná", "Elías", "Oporapa", "Saladoblanco", "Isnos", "San Agustín", "Palestina", "Pital", "Tesalia", "Paicol", "Nátaga", "Íquira", "Teruel", "Tarqui"],
+            "La Guajira": ["Riohacha", "Maicao", "Uribia", "Manaure", "San Juan del Cesar", "Fonseca", "Barrancas", "Villanueva", "El Molino", "Urumita", "La Jagua del Pilar", "Hatonuevo", "Albania", "Distracción", "Dibulla"],
+            "Magdalena": ["Santa Marta", "Ciénaga", "Fundación", "El Banco", "Plato", "Aracataca", "Pivijay", "Zona Bananera", "El Retén", "Algarrobo", "Ariguaní", "Cerro de San Antonio", "Chibolo", "Concordia", "El Piñón", "Guamal", "Nueva Granada", "Pedraza", "Pijiño del Carmen", "Puebloviejo", "Remolino", "Sabanas de San Ángel", "Salamina", "San Sebastián de Buenavista", "San Zenón", "Santa Ana", "Santa Bárbara de Pinto", "Sitionuevo", "Tenerife", "Zapayán"],
+            "Meta": ["Villavicencio", "Acacías", "Granada", "Puerto López", "San Martín", "Cumaral", "Restrepo", "Puerto Gaitán", "Guamal", "Castilla la Nueva", "San Carlos de Guaroa", "Barranca de Upía", "Cabuyaro", "Puerto Lleras", "Puerto Rico", "Vista Hermosa", "San Juan de Arama", "Mesetas", "Lejanías", "El Castillo", "El Dorado", "Uribe", "La Macarena", "Mapiripán", "Puerto Concordia", "El Calvario", "San Juanito", "Fuente de Oro"],
+            "Nariño": ["Pasto", "Tumaco", "Ipiales", "Túquerres", "La Unión", "Samaniego", "Sandoná", "Barbacoas", "El Charco", "Olaya Herrera", "La Tola", "Magüí Payán", "Roberto Payán", "Francisco Pizarro", "Mosquera", "Santa Bárbara", "Cumbitara", "Policarpa", "Los Andes", "El Rosario", "Leiva", "El Tambo", "Taminango", "San Lorenzo", "Arboleda", "San Pedro de Cartago", "Albán", "Buesaco", "Chachagüí", "El Tablón de Gómez", "La Florida", "Nariño", "Tangua", "Yacuanquer", "Consacá", "Ancuya", "Linares", "La Llanada", "Sotomayor", "Santacruz", "Sapuyes", "Ospina", "Iles", "Gualmatán", "Contadero", "Córdoba", "Puerres", "Funes", "Potosí", "Cuaspud Carlosama", "Aldana", "Guachucal", "Cumbal", "Mallama", "Ricaurte"],
+            "Norte de Santander": ["Cúcuta", "Ocaña", "Pamplona", "Villa del Rosario", "Los Patios", "El Zulia", "Tibú", "Sardinata", "Chinácota", "Ábrego", "Convención", "El Tarra", "Hacarí", "La Playa", "San Calixto", "Teorama", "Cáchira", "La Esperanza", "Santiago", "Durania", "Arboledas", "Cucutilla", "Gramalote", "Lourdes", "Salazar", "Villa Caro", "Bucarasica", "Bochalema", "Herrán", "Ragonvalia", "Labateca", "Toledo", "Chitagá", "Cácota", "Mutiscua", "Silos", "Puerto Santander"],
+            "Putumayo": ["Mocoa", "Puerto Asís", "Orito", "Valle del Guamuez", "San Miguel", "Villagarzón", "Puerto Caicedo", "Puerto Guzmán", "Leguízamo", "Sibundoy", "Colón", "Santiago", "San Francisco"],
+            "Quindío": ["Armenia", "Calarcá", "Montenegro", "Quimbaya", "La Tebaida", "Circasia", "Filandia", "Salento", "Génova", "Pijao", "Buenavista", "Córdoba"],
+            "Risaralda": ["Pereira", "Dosquebradas", "Santa Rosa de Cabal", "La Virginia", "Belén de Umbría", "Quinchía", "Guática", "Marsella", "Santuario", "Apía", "La Celia", "Balboa", "Pueblo Rico", "Mistrató"],
+            "San Andrés y Providencia": ["San Andrés", "Providencia"],
+            "Santander": ["Bucaramanga", "Floridablanca", "Girón", "Piedecuesta", "Barrancabermeja", "San Gil", "Socorro", "Vélez", "Barbosa", "Puerto Wilches", "Sabana de Torres", "Lebrija", "Rionegro", "Cimitarra", "Málaga", "Charalá", "Oiba", "Guadalupe", "Suaita", "Contratación", "El Playón", "Zapatoca", "Los Santos", "Villanueva", "Curití", "Aratoca", "Mogotes", "San Joaquín", "Onzaga", "Encino", "Capitanejo", "Macaravita", "San Miguel", "Carcasí", "Cerrito", "Concepción", "Guaca", "San Andrés"],
+            "Sucre": ["Sincelejo", "Corozal", "San Marcos", "Sampués", "Tolú", "San Onofre", "Coveñas", "Sincé", "Galeras", "Los Palmitos", "Morroa", "Buenavista", "San Pedro", "Majagual", "Sucre", "Guaranda", "Chalán", "Coloso", "Ovejas", "San Antonio de Palmito", "Tolú Viejo", "San Benito Abad", "Caimito", "La Unión", "San Juan de Betulia", "El Roble"],
+            "Tolima": ["Ibagué", "Espinal", "Melgar", "Chaparral", "Líbano", "Honda", "Mariquita", "Fresno", "Guamo", "Purificación", "Natagaima", "Coyaima", "Ortega", "Planadas", "Rioblanco", "Ataco", "Saldaña", "Prado", "Dolores", "Alpujarra", "Villarrica", "Cunday", "Icononzo", "Falan", "Palocabildo", "Casabianca", "Villahermosa", "Lérida", "Ambalema", "Venadillo", "Piedras", "Alvarado", "Anzoátegui", "Santa Isabel", "Murillo", "Herveo", "Cajamarca", "Rovira", "Roncesvalles", "San Antonio", "Valle de San Juan", "San Luis", "Carmen de Apicalá", "Suárez", "Flandes", "Coello"],
+            "Valle del Cauca": ["Cali", "Buenaventura", "Palmira", "Tuluá", "Buga", "Cartago", "Jamundí", "Yumbo", "Florida", "Candelaria", "Pradera", "El Cerrito", "Zarzal", "Roldanillo", "Sevilla", "Caicedonia", "Dagua", "La Unión", "Ginebra", "Guacarí", "San Pedro", "Andalucía", "Bugalagrande", "Trujillo", "Riofrio", "Obando", "La Victoria", "Toro", "Ansermanuevo", "El Águila", "El Cairo", "Argelia", "Versalles", "El Dovio", "Bolívar", "Alcalá", "Ulloa", "Restrepo", "Calima", "Vijes", "Yotoco"],
+            "Vaupés": ["Mitú", "Carurú", "Taraira", "Papunaua", "Yavaraté", "Pacoa"],
+            "Vichada": ["Puerto Carreño", "La Primavera", "Santa Rosalía", "Cumaribo"]
+        };
+
+        // === INICIALIZAR PÁGINA ===
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar botón volver
+            document.getElementById('backBtn').href = backUrl;
+
+            // Cargar departamentos
+            const deptSelect = document.getElementById('departamento');
+            const citySelect = document.getElementById('ciudad');
+            
+            Object.keys(colombiaData).sort().forEach(dept => {
+                const option = document.createElement('option');
+                option.value = dept;
+                option.textContent = dept;
+                deptSelect.appendChild(option);
+            });
+
+            // Evento para cargar municipios
+            deptSelect.addEventListener('change', function() {
+                const selectedDept = this.value;
+                citySelect.innerHTML = '<option value="">Selecciona municipio</option>';
+                
+                if (selectedDept && colombiaData[selectedDept]) {
+                    citySelect.disabled = false;
+                    colombiaData[selectedDept].sort().forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city;
+                        option.textContent = city;
+                        citySelect.appendChild(option);
+                    });
+                } else {
+                    citySelect.disabled = true;
+                    citySelect.innerHTML = '<option value="">Primero selecciona departamento</option>';
+                }
+            });
+
+            // Mostrar información del producto
+            document.getElementById('productName').textContent = productName;
+            document.getElementById('productDesc').textContent = productDesc;
+            document.getElementById('summaryProduct').textContent = productName;
+
+            // Mostrar imagen si existe
+            if (productImage) {
+                const imgEl = document.getElementById('productImg');
+                imgEl.src = productImage;
+                imgEl.style.display = 'block';
+                document.getElementById('productPlaceholder').style.display = 'none';
+            }
+
+            // Mostrar precio
+            if (productPrice > 0) {
+                if (productPriceOriginal > 0) {
+                    document.getElementById('productPrice').innerHTML = '<span style="text-decoration: line-through; color: #999; font-size: 0.8em;">' + formatPrice(productPriceOriginal) + '</span> ' + formatPrice(productPrice) + ' <span>COP</span>';
+                } else {
+                    document.getElementById('productPrice').innerHTML = formatPrice(productPrice) + ' <span>COP</span>';
+                }
+                document.getElementById('summaryUnitPrice').textContent = formatPrice(productPrice);
+            } else {
+                document.getElementById('productPrice').textContent = '¡Cotiza Ahora!';
+                document.getElementById('summaryUnitPrice').textContent = 'A cotizar';
+            }
+
+            updateTotals();
+        });
+
+        // === FORMATEAR PRECIO ===
+        function formatPrice(price) {
+            return '$' + price.toLocaleString('es-CO');
+        }
+
+        // === CAMBIAR CANTIDAD ===
+        function changeQty(delta) {
+            const input = document.getElementById('quantity');
+            let value = parseInt(input.value) || 1;
+            value = Math.max(1, Math.min(99, value + delta));
+            input.value = value;
+            updateTotals();
+        }
+
+        // === ACTUALIZAR TOTALES ===
+        function updateTotals() {
+            const qty = parseInt(document.getElementById('quantity').value) || 1;
+            document.getElementById('summaryQty').textContent = qty;
+
+            if (productPrice > 0) {
+                const total = productPrice * qty;
+                document.getElementById('summaryTotal').textContent = formatPrice(total);
+            } else {
+                document.getElementById('summaryTotal').textContent = 'A cotizar';
+            }
+        }
+
+        // === VARIABLES GLOBALES ===
         let orderText = '';
 
-        // Generar texto del pedido
+        // === GENERAR TEXTO DEL PEDIDO ===
         function generateOrderText(data) {
             const ticketNumber = 'GS-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+            const qty = parseInt(document.getElementById('quantity').value) || 1;
+            const total = productPrice > 0 ? formatPrice(productPrice * qty) : 'A cotizar';
+            const unitPrice = productPrice > 0 ? formatPrice(productPrice) : 'A cotizar';
             
             return `═══════════════════════════
-🛋️ PEDIDO G&S TAPICERÍA
+🛒 PEDIDO G&S TAPICERÍA
 ═══════════════════════════
 
 📋 N° de Pedido: ${ticketNumber}
 📅 Fecha: ${new Date().toLocaleDateString('es-CO')}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 PRODUCTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Producto: ${productName}
+• Cantidad: ${qty}
+• Precio unitario: ${unitPrice}
+• TOTAL: ${total}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
 👤 DATOS DEL CLIENTE
@@ -635,49 +968,49 @@
 • Nombre: ${data.nombre}
 • Teléfono: ${data.telefono}
 • Email: ${data.correo}
+• Cédula: ${data.cedula}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📍 DATOS DE ENVÍO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Departamento: ${data.departamento}
 • Ciudad: ${data.ciudad}
+• Dirección: ${data.direccion}
+• Barrio: ${data.barrio || 'No especificado'}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔧 DETALLES DEL PEDIDO
+📝 NOTAS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Servicio: ${data.tipoServicio}
-• Presupuesto: ${data.presupuesto}
-• Urgencia: ${data.urgencia}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📝 DESCRIPCIÓN
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${data.descripcion}
+${data.notas || 'Sin notas adicionales'}
 
 ═══════════════════════════
-✨ Gracias por contactar G&S
+✨ Gracias por comprar en G&S
    Tapicería y Instalaciones
 ═══════════════════════════`;
         }
 
-        // Mostrar modal
+        // === MOSTRAR/OCULTAR MODAL ===
         function showModal() {
             document.getElementById('orderModal').classList.add('active');
         }
 
-        // Ocultar modal
         function hideModal() {
             document.getElementById('orderModal').classList.remove('active');
         }
 
-        // Copiar al portapapeles
+        // === COPIAR AL PORTAPAPELES ===
         function copyToClipboard() {
             navigator.clipboard.writeText(orderText).then(() => {
                 const btn = document.getElementById('copyBtn');
-                btn.innerHTML = '✅ ¡Copiado al Portapapeles!';
+                btn.innerHTML = '✅ ¡Copiado!';
                 btn.classList.add('copied');
                 
                 setTimeout(() => {
-                    btn.innerHTML = '📋 Copiar Información del Pedido';
+                    btn.innerHTML = '📋 Copiar Pedido';
                     btn.classList.remove('copied');
                 }, 3000);
             }).catch(() => {
-                // Fallback para navegadores antiguos
+                // Fallback
                 const textArea = document.createElement('textarea');
                 textArea.value = orderText;
                 document.body.appendChild(textArea);
@@ -686,64 +1019,53 @@ ${data.descripcion}
                 document.body.removeChild(textArea);
                 
                 const btn = document.getElementById('copyBtn');
-                btn.innerHTML = '✅ ¡Copiado al Portapapeles!';
+                btn.innerHTML = '✅ ¡Copiado!';
                 btn.classList.add('copied');
                 
                 setTimeout(() => {
-                    btn.innerHTML = '📋 Copiar Información del Pedido';
+                    btn.innerHTML = '📋 Copiar Pedido';
                     btn.classList.remove('copied');
                 }, 3000);
             });
         }
 
-        // Manejar envío del formulario
+        // === MANEJAR ENVÍO DEL FORMULARIO ===
         document.getElementById('checkoutForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Recoger datos
             const data = {
                 nombre: document.getElementById('nombre').value,
                 telefono: document.getElementById('telefono').value,
                 correo: document.getElementById('correo').value,
+                cedula: document.getElementById('cedula').value,
+                departamento: document.getElementById('departamento').value,
                 ciudad: document.getElementById('ciudad').value,
-                tipoServicio: document.getElementById('tipoServicio').value,
-                descripcion: document.getElementById('descripcion').value,
-                presupuesto: document.getElementById('presupuesto').value,
-                urgencia: document.getElementById('urgencia').value
+                direccion: document.getElementById('direccion').value,
+                barrio: document.getElementById('barrio').value,
+                notas: document.getElementById('notas').value
             };
 
             // Mostrar loading
             document.getElementById('loadingOverlay').classList.add('active');
 
             setTimeout(() => {
-                // Ocultar loading
                 document.getElementById('loadingOverlay').classList.remove('active');
-
-                // Generar texto del pedido
                 orderText = generateOrderText(data);
                 document.getElementById('orderInfoText').textContent = orderText;
-
-                // Mostrar modal
                 showModal();
             }, 600);
         });
 
-        // Event listeners para botones del modal
+        // === EVENT LISTENERS ===
         document.getElementById('copyBtn').addEventListener('click', copyToClipboard);
         document.getElementById('closeModalBtn').addEventListener('click', hideModal);
 
-        // Cerrar modal al hacer clic fuera
         document.getElementById('orderModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                hideModal();
-            }
+            if (e.target === this) hideModal();
         });
 
-        // Cerrar con Escape
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                hideModal();
-            }
+            if (e.key === 'Escape') hideModal();
         });
     </script>
 </body>

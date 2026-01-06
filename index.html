@@ -63,6 +63,77 @@
             66% { transform: translate(-20px, 20px) rotate(-5deg); }
         }
 
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 20px 40px rgba(255, 168, 107, 0.5), 0 0 25px rgba(255, 140, 66, 0.4);
+                transform: scale(1) rotate(0deg);
+            }
+            25% { 
+                transform: scale(1.03) rotate(-1deg);
+            }
+            50% { 
+                box-shadow: 0 25px 55px rgba(255, 168, 107, 0.7), 0 0 40px rgba(255, 140, 66, 0.6);
+                transform: scale(1.05) rotate(1deg);
+            }
+            75% { 
+                transform: scale(1.03) rotate(-1deg);
+            }
+        }
+
+        @keyframes shake-glow {
+            0%, 100% { 
+                transform: translateX(0) scale(1);
+                box-shadow: 0 15px 35px rgba(255, 168, 107, 0.4), 0 0 20px rgba(255, 140, 66, 0.3);
+            }
+            10%, 30%, 50%, 70%, 90% { 
+                transform: translateX(-3px) scale(1.02);
+            }
+            20%, 40%, 60%, 80% { 
+                transform: translateX(3px) scale(1.02);
+            }
+        }
+
+        .cta-button-products {
+            background: linear-gradient(135deg, #ffa86b 0%, #ff8c42 50%, #f7931e 100%) !important;
+            color: white !important;
+            position: relative;
+            overflow: hidden;
+            animation: shake-glow 2.5s ease-in-out infinite;
+            border: 2px solid rgba(255,255,255,0.3) !important;
+        }
+
+        .cta-button-products::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255,255,255,0.4) 50%,
+                transparent 70%
+            );
+            animation: shimmer-products 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer-products {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .cta-button-products:hover {
+            animation: none;
+            transform: scale(1.08) !important;
+            box-shadow: 0 25px 60px rgba(255, 140, 66, 0.5), 0 0 50px rgba(255, 168, 107, 0.4) !important;
+        }
+
+        /* Fila de botones secundarios - Desktop */
+        .secondary-buttons-row {
+            display: contents;
+        }
+
         .hero-content {
             max-width: 1300px;
             width: 100%;
@@ -795,23 +866,23 @@
 
             .hero-image {
                 order: -1;
-                max-width: 380px;
+                max-width: 450px;
                 margin: 0 auto;
-                padding: 30px;
+                padding: 35px;
             }
 
             .hero-image::before {
-                width: 120px;
-                height: 120px;
-                top: -20px;
-                right: -20px;
+                width: 140px;
+                height: 140px;
+                top: -25px;
+                right: -25px;
             }
 
             .hero-image::after {
-                width: 80px;
-                height: 80px;
-                bottom: -15px;
-                left: -15px;
+                width: 100px;
+                height: 100px;
+                bottom: -20px;
+                left: -20px;
             }
 
             .hero-text {
@@ -861,23 +932,23 @@
             }
 
             .hero-image {
-                max-width: 300px;
-                padding: 25px;
+                max-width: 380px;
+                padding: 30px;
                 border-radius: 25px;
             }
 
             .hero-image::before {
-                width: 90px;
-                height: 90px;
-                top: -15px;
-                right: -15px;
+                width: 110px;
+                height: 110px;
+                top: -18px;
+                right: -18px;
             }
 
             .hero-image::after {
-                width: 60px;
-                height: 60px;
-                bottom: -12px;
-                left: -12px;
+                width: 80px;
+                height: 80px;
+                bottom: -15px;
+                left: -15px;
             }
 
             .hero-text h1 {
@@ -946,11 +1017,51 @@
 
             .cta-container {
                 flex-direction: column;
+                gap: 15px;
             }
 
             .cta-button {
-                width: 100%;
                 justify-content: center;
+                padding: 12px 15px;
+                font-size: 0.85rem;
+                border-radius: 12px;
+            }
+
+            /* Botón principal grande */
+            .cta-button-products {
+                order: -1;
+                width: 100%;
+                padding: 22px 30px !important;
+                font-size: 1.3rem !important;
+                font-weight: 800 !important;
+                border-radius: 18px !important;
+                margin-bottom: 5px;
+            }
+
+            /* Contenedor para los 3 botones secundarios */
+            .cta-container .cta-button:not(.cta-button-products) {
+                flex: 1;
+                min-width: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .cta-button-secondary {
+                padding: 12px 10px;
+                font-size: 0.8rem;
+            }
+
+            .cta-button-vip {
+                padding: 12px 10px;
+                font-size: 0.8rem;
+            }
+
+            /* Fila de botones secundarios */
+            .secondary-buttons-row {
+                display: flex;
+                gap: 8px;
+                width: 100%;
             }
         }
 
@@ -1274,15 +1385,20 @@
                 <p>Desde restauración de muebles de alta gama hasta instalaciones completas. Combinamos artesanía tradicional con diseño contemporáneo para crear espacios que inspiran.</p>
                 
                 <div class="cta-container">
-                    <a href="cotizacion.html" class="cta-button">
-                        📞 Solicita Cotización Gratis
+                    <a href="catalogo.html" class="cta-button cta-button-products">
+                        🛋️ ¡Ver Nuestros Productos!
                     </a>
-                    <a href="#servicios" class="cta-button cta-button-secondary">
-                        Ver Servicios
-                    </a>
-                    <button class="cta-button cta-button-vip" onclick="openVipModal()">
-                        🌟 Ver Restauraciones VIP
-                    </button>
+                    <div class="secondary-buttons-row">
+                        <a href="cotizacion.html" class="cta-button">
+                            📞 Cotizar
+                        </a>
+                        <a href="#servicios" class="cta-button cta-button-secondary">
+                            🔧 Servicios
+                        </a>
+                        <button class="cta-button cta-button-vip" onclick="openVipModal()">
+                            🌟 VIP
+                        </button>
+                    </div>
                 </div>
 
                 <div class="trust-indicators">
