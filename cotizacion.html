@@ -1668,15 +1668,6 @@ ${formData.get('descripcion') || 'Sin descripción adicional'}
             }
         });
 
-        // Check for URL params (service pre-selection)
-        document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const service = urlParams.get('servicio');
-            if (service) {
-                selectService(service);
-            }
-        });
-
         // Service Selection
         document.querySelectorAll('.service-option').forEach(option => {
             option.addEventListener('click', function() {
@@ -1707,6 +1698,15 @@ ${formData.get('descripcion') || 'Sin descripción adicional'}
                 }
             }
         }
+
+        // Check for URL params (service pre-selection) - ejecutar inmediatamente
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const service = urlParams.get('servicio');
+            if (service) {
+                selectService(service);
+            }
+        })();
 
         // Step 1 button
         document.getElementById('btnStep1').addEventListener('click', function() {
