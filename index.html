@@ -1609,25 +1609,83 @@
         </div>
 
         <div class="vip-modal-content">
-            <!-- Video Section -->
-            <div class="vip-video-section" id="vipVideoSection">
-                <div class="vip-video-container" onclick="showVipGallery()">
-                    <video class="vip-video" id="vipVideo" autoplay muted loop playsinline webkit-playsinline>
-                        <source src="images/restauraciones/restauracionvideogif1.mp4" type="video/mp4">
-                        Tu navegador no soporta video.
-                    </video>
+            <!-- ========== RESTAURACIÓN 1 ========== -->
+            <div class="restauracion-section" id="restauracion1" style="margin-bottom: 50px;">
+                <h3 style="color: #ffd700; font-size: 1.5rem; margin-bottom: 20px; text-align: center;">🪑 Restauración 1</h3>
+                <!-- Video Section R1 -->
+                <div class="vip-video-section" id="vipVideoSection1">
+                    <div class="vip-video-container" onclick="showVipGallery(1)">
+                        <video class="vip-video" id="vipVideo1" autoplay muted loop playsinline webkit-playsinline>
+                            <source src="images/restauraciones/restauracion1/restauracionvideogif1.mp4" type="video/mp4">
+                            Tu navegador no soporta video.
+                        </video>
+                    </div>
+                </div>
+
+                <!-- Gallery Section R1 -->
+                <div class="vip-gallery" id="vipGallery1">
+                    <div class="vip-gallery-header">
+                        <h3 class="vip-gallery-title">📸 Restauración 1 - Proceso</h3>
+                        <button class="vip-back-btn" onclick="showVipVideo(1)">← Volver al video</button>
+                    </div>
+                    <div class="vip-gallery-grid">
+                        <div class="vip-gallery-item" onclick="openLightbox('images/restauraciones/restauracion1/restauracionimage1.jpg')">
+                            <img src="images/restauraciones/restauracion1/restauracionimage1.jpg" alt="Restauración 1 - Antes y Después">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Gallery Section -->
-            <div class="vip-gallery" id="vipGallery">
-                <div class="vip-gallery-header">
-                    <h3 class="vip-gallery-title">📸 Fotos del Proceso de Restauración</h3>
-                    <button class="vip-back-btn" onclick="showVipVideo()">← Volver al video</button>
+            <!-- Separador -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); margin: 40px 0;"></div>
+
+            <!-- ========== RESTAURACIÓN 2 ========== -->
+            <div class="restauracion-section" id="restauracion2">
+                <h3 style="color: #ffd700; font-size: 1.5rem; margin-bottom: 20px; text-align: center;">🛋️ Restauración 2</h3>
+                <!-- Video Section R2 -->
+                <div class="vip-video-section" id="vipVideoSection2">
+                    <div class="vip-video-container" onclick="showVipGallery(2)">
+                        <video class="vip-video" id="vipVideo2" autoplay muted loop playsinline webkit-playsinline>
+                            <source src="images/restauraciones/restauracion2/restauracionvideo2.mp4" type="video/mp4">
+                            Tu navegador no soporta video.
+                        </video>
+                    </div>
                 </div>
-                <div class="vip-gallery-grid">
-                    <div class="vip-gallery-item" onclick="openLightbox('images/restauraciones/restauracionimage1.jpg')">
-                        <img src="images/restauraciones/restauracionimage1.jpg" alt="Restauración VIP - Antes y Después">
+
+                <!-- Gallery Section R2 -->
+                <div class="vip-gallery" id="vipGallery2">
+                    <div class="vip-gallery-header">
+                        <h3 class="vip-gallery-title">📸 Restauración 2 - Proceso</h3>
+                        <button class="vip-back-btn" onclick="showVipVideo(2)">← Volver al video</button>
+                    </div>
+                    <div class="vip-gallery-grid">
+                        <div class="vip-gallery-item" onclick="openLightbox('images/restauraciones/restauracion2/restauracionv1.jpg')">
+                            <img src="images/restauraciones/restauracion2/restauracionv1.jpg" alt="Restauración 2 - Imagen 1">
+                        </div>
+                        <div class="vip-gallery-item" onclick="openLightbox('images/restauraciones/restauracion2/restauracionv2.jpg')">
+                            <img src="images/restauraciones/restauracion2/restauracionv2.jpg" alt="Restauración 2 - Imagen 2">
+                        </div>
+                        <div class="vip-gallery-item" onclick="openLightbox('images/restauraciones/restauracion2/restauracionv3.jpg')">
+                            <img src="images/restauraciones/restauracion2/restauracionv3.jpg" alt="Restauración 2 - Imagen 3">
+                        </div>
+                        <div class="vip-gallery-item" onclick="openLightbox('images/restauraciones/restauracion2/restauracionv4.jpg')">
+                            <img src="images/restauraciones/restauracion2/restauracionv4.jpg" alt="Restauración 2 - Imagen 4">
+                        </div>
+                        <div class="vip-gallery-item" onclick="openLightbox('images/restauraciones/restauracion2/restauracionv5.jpg')">
+                            <img src="images/restauraciones/restauracion2/restauracionv5.jpg" alt="Restauración 2 - Imagen 5">
+                        </div>
+                        <div class="vip-gallery-item" onclick="openLightbox('images/restauraciones/restauracion2/restauracionv6.jpg')">
+                            <img src="images/restauraciones/restauracion2/restauracionv6.jpg" alt="Restauración 2 - Imagen 6">
+                        </div>
+                        <div class="vip-gallery-item" onclick="openLightbox('images/restauraciones/restauracion2/restauracionv7.jpg')">
+                            <img src="images/restauraciones/restauracion2/restauracionv7.jpg" alt="Restauración 2 - Imagen 7">
+                        </div>
+                        <div class="vip-gallery-item" onclick="openLightbox('images/restauraciones/restauracion2/restauracionv8.jpg')">
+                            <img src="images/restauraciones/restauracion2/restauracionv8.jpg" alt="Restauración 2 - Imagen 8">
+                        </div>
+                        <div class="vip-gallery-item" onclick="openLightbox('images/restauraciones/restauracion2/restauracionv9.png')">
+                            <img src="images/restauraciones/restauracion2/restauracionv9.png" alt="Restauración 2 - Imagen 9">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1645,46 +1703,47 @@
         function openVipModal() {
             document.getElementById('vipModal').classList.add('active');
             document.body.style.overflow = 'hidden';
-            showVipVideo();
-            // Forzar reproducción del video en móviles
-            playVipVideo();
+            // Reproducir ambos videos
+            playVipVideo(1);
+            playVipVideo(2);
         }
 
         function closeVipModal() {
             document.getElementById('vipModal').classList.remove('active');
             document.body.style.overflow = '';
-            // Pausar video cuando se cierra el modal
-            const video = document.getElementById('vipVideo');
-            if (video) {
-                video.pause();
-            }
+            // Pausar todos los videos
+            pauseAllVideos();
         }
 
-        function showVipGallery() {
-            document.getElementById('vipVideoSection').style.display = 'none';
-            document.getElementById('vipGallery').classList.add('active');
-            // Pausar video cuando se muestra la galería
-            const video = document.getElementById('vipVideo');
-            if (video) {
-                video.pause();
-            }
+        function pauseAllVideos() {
+            const video1 = document.getElementById('vipVideo1');
+            const video2 = document.getElementById('vipVideo2');
+            if (video1) video1.pause();
+            if (video2) video2.pause();
         }
 
-        function showVipVideo() {
-            document.getElementById('vipVideoSection').style.display = 'block';
-            document.getElementById('vipGallery').classList.remove('active');
-            // Reproducir video cuando se vuelve a mostrar
-            playVipVideo();
+        function showVipGallery(num) {
+            document.getElementById('vipVideoSection' + num).style.display = 'none';
+            document.getElementById('vipGallery' + num).classList.add('active');
+            // Pausar video
+            const video = document.getElementById('vipVideo' + num);
+            if (video) video.pause();
+        }
+
+        function showVipVideo(num) {
+            document.getElementById('vipVideoSection' + num).style.display = 'block';
+            document.getElementById('vipGallery' + num).classList.remove('active');
+            // Reproducir video
+            playVipVideo(num);
         }
 
         // Función para forzar reproducción del video en móviles
-        function playVipVideo() {
-            const video = document.getElementById('vipVideo');
+        function playVipVideo(num) {
+            const video = document.getElementById('vipVideo' + num);
             if (video) {
-                video.muted = true; // Asegurar que esté silenciado (requerido para autoplay)
+                video.muted = true;
                 video.play().catch(function(error) {
                     console.log('Autoplay bloqueado:', error);
-                    // Si falla, intentar de nuevo con un pequeño retraso
                     setTimeout(function() {
                         video.play().catch(function() {});
                     }, 100);
